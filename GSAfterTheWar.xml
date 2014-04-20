@@ -1,45 +1,45 @@
 <map proto="1.3.2">
-<name>GS: After the War</name>
-<version>1.1.1</version>
-<objective>Kill the enemy's squadron!</objective>
-<include src="gs-classes.xml"/>
-<authors>
-<author contribution="Creator of the map and XML.">Timothee38</author>
-</authors>
-<contributors>
-<contributor contribution="Feedback.">pepsidawg00</contributor>
-<contributor contribution="Feedback.">ajtag5</contributor>
-</contributors>
-<teams>
-<team color="gold" max="8">Orange Team</team>
-<team color="green" max="8">Green Team</team>
-</teams>
-<spawns>
-<spawn team="orange" yaw="-90">
-<cuboid min="21,6,45" max="22,6,44"/>
-</spawn>
-<spawn team="green" yaw="90">
-<cuboid min="94,6,42" max="93,6,43"/>
-</spawn>
-<default yaw="-180">
-<cuboid min="58,25,44" max="57,25,43"/>
-</default>
-</spawns>
-<filters>
-<filter name="deny-some">
-<deny>
-<block>dispenser</block>
-<block>chest</block>
-</deny>
-</filter>
-</filters>
-<regions>
-<rectangle name="main-area" min="-oo,-oo" max="oo,oo"/>
-<apply block="deny-all">
-<region name="main-area"/>
-</apply>
-<apply use="deny-some">
-<region name="main-area"/>
-</apply>
-</regions>
+  <name>GS: After the War</name>
+  <version>1.1.1</version>
+  <objective>Kill the enemy's squadron!</objective>
+  <include src="gs-classes.xml"/>
+  <authors>
+    <author contribution="Creator of the map and XML.">Timothee38</author>
+  </authors>
+  <contributors>
+    <contributor contribution="Feedback.">pepsidawg00</contributor>
+    <contributor contribution="Feedback.">ajtag5</contributor>
+  </contributors>
+  <teams>
+    <team color="gold" max="8">Orange Team</team>
+    <team color="green" max="8">Green Team</team>
+  </teams>
+  <spawns>
+    <spawn team="orange" yaw="-90">
+      <cuboid min="21,6,45" max="22,6,44"/>
+    </spawn>
+    <spawn team="green" yaw="90">
+      <cuboid min="94,6,42" max="93,6,43"/>
+    </spawn>
+    <default yaw="-180">
+      <cuboid min="58,25,44" max="57,25,43"/>
+    </default>
+  </spawns>
+  <filters>
+    <filter name="deny-some">
+      <deny>
+        <block>dispenser</block>
+        <block>chest</block>
+      </deny>
+    </filter>
+  </filters>
+  <regions>
+    <rectangle name="main-area" min="-oo,-oo" max="oo,oo"/>
+    <apply block="deny-all">
+      <region name="main-area"/>
+    </apply>
+    <apply use="deny-some">
+      <region name="main-area"/>
+    </apply>
+  </regions>
 </map>
