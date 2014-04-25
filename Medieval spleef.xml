@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<map proto="1.3.2">
+	<name>Medieval Spleef</name>
+	<version>1.0.0</version>
+	<objective>Spleef everyone else out of the arena!</objective>
+	<authors>
+		<author>Timothee38</author>
+	</authors>
+	<rules>
+		<rule>Do not make it so that players cannot spleef you! This includes, but is not limited to, creating a gap around the blocks that you are standing on so no one can reach you.</rule>
+		<rule>You may not Team Spleef, nah just kidding :3</rule>
+	</rules>
+	<blitz>
+		<time>1m</time>
+		<lives>1</lives>
+		<title>Spleef</title>
+	</blitz>
+	<include src="tutorial.xml"/>
+	<tutorial>
+		<stage title="`3`lSpleef">
+			<message>
+				<line>`rThis map is a `6Free For All `3Spleef `rgamemode map. Each players spawns with a `cEfficiency 20 Diamond Pickaxe`r.</line>
+				<line>Your objective is to spleef everyone else and be the last man standing! `a`lGood Luck!</line>
+			</message>
+		</stage>
+	</tutorial>
+	<teams>
+		<team color="dark aqua" max="25">Spleefers</team>
+	</teams>
+	<timelock>on</timelock>
+	<!-- Prevents Direct PvP (Prevents players from punching eachother) -->
+	<disabledamage>
+		<damage>entity attack</damage>
+	</disabledamage>
+	<hunger>
+		<depletion>off</depletion>
+	</hunger>
+	<kits>
+		<kit name="spleefers">
+			<item slot="0" enchantment="fast digging:10" damage="-3000">diamond spade</item>
+			<helmet color="46C7C7" damage="-3000">leather helmet</helmet>
+			<chestplate color="46C7C7" damage="-3000">leather chestplate</chestplate>
+			<leggings color="46C7C7" damage="-3000">leather leggings</leggings>
+			<boots color="46C7C7" damage="-3000">leather boots</boots>
+		</kit>
+	</kits>
+	<itemremove>
+        <item>332</item>
+        <item>337</item>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>leather leggings</item>
+        <item>leather boots</item>
+    </itemremove>
+    <toolrepair>
+        <tool>diamond spade</tool>
+    </toolrepair>
+	
+    <filters>
+        <filter name="only-snow-and-clay" parents="deny-all">
+            <allow>
+            <!-- Snow Block -->
+            <block>80</block>
+            <!-- Clay Block -->
+            <block>82</block>
+            </allow>
+        </filter>
+    </filters>
+	
+    <regions>
+        <apply block="only-snow-and-clay" message="You may only break snow and clay blocks!">
+            <rectangle name="main-area" min="-oo,-oo" max="oo,oo"/>
+        </apply>
+    </regions>
+	<spawns>
+		<spawn team="spleefers" yaw="180">
+			<cylinder base="0,6,0" radius="7" height="0"/>
+		</spawn>
+		<default yaw="0">
+			<cylinder base="0,27,0" radius="1" height="0"/>
+		</default>
+	</spawns>
+</map>
