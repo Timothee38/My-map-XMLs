@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<map proto="1.3.2">
+    <name>Adagio</name> 
+    <version>1.0</version> 
+    <objective>Destroy the other team's monuments.</objective>
+    <authors>
+        <author contribution="Aesthetics, Gameplay ideas and XML.">Timothee38</author>
+        <author contribution="Building, Gameplay ideas and Feedback.">Runomo</author>
+    </authors>
+    <kits>
+        <kit name="spawn">
+            <item slot="0">diamond sword</item>
+            <item slot="1" enchantment="dig speed:7;arrow infinite:1">bow</item>
+            <item slot="28">arrow</item>
+            <item slot="2" enchantment="dig speed:1">iron pickaxe</item>
+            <item slot="3">diamond axe</item>
+            <item slot="4" amount="64">cooked_beef</item>
+            <item slot="5" amount="32" damage="1">log</item>
+            <item slot="6" amount="32">glass</item>
+            <item slot="7">golden apple</item>
+        </kit>
+    </kits>
+    <teams>
+       <team color="yellow" max="16">Yellow Team</team>
+       <team color="light purple" max="16">Pink Team</team>
+    </teams>
+    <spawns>
+        <spawn team="yellow" kit="spawn" yaw="90">
+            <cuboid min="139,24,-1" max="148,24,-10"/>
+        </spawn>
+        <spawn team="pink" kit="spawn" yaw="-90">
+            <cuboid min="16,24,-11" max="8,24,-2"/>
+        </spawn>
+        <default yaw="180">
+            <cuboid min="76,15,49" max="80,15,52"/>
+        </default>
+    </spawns>
+    <filters>     
+        <filter name="no-breakSB">
+            <block>mob_spawner</block>
+            <block>beacon</block>
+        </filter>         
+        <filter name="only-iron" parents="deny-all">
+            <block>iron_block</block>
+        </filter>
+    </filters>
+    <regions>
+        <cuboid name="pinkmonA" min="44,9,17" max="41,11,20"/>
+        <cuboid name="pinkmonB" min="44,9,-30" max="41,11,-33"/>
+        <cuboid name="yellowmonA" min="113,9,-30" max="116,11,-33"/>
+        <cuboid name="yellowmonB" min="113,9,20" max="116,11,17"/>
+        <cuboid name="pink-portal" min="21,24,8" max="19,26,-5"/>
+        <cuboid name="yellow-portal" min="137,24,-7" max="137,25,-7"/>
+        <cuboid name="playable" min="124,0,-41" max="32,20,-136"/>
+		<rectangle name="pinkspawn" min="32,28" max="-3,-45"/>
+        <rectangle name="yellowspawn" min="124,-41" max="164,32"/>
+		<union name="play">
+			<region name="pinkspawn" />
+			<region name="yellowspawn" />
+			<region name="playable" />
+		</union>
+        <apply block="deny-all"><negative><region name="play"/></negative></apply>
+        <apply block="only-iron" message="You may not break or place anything else then iron blocks here.">
+            <union>
+                <region name="pinkspawn" />
+			    <region name="yellowspawn" />  
+            </union>
+        </apply>
+		<apply block-break="no-breakSB">
+		    <rectangle name="main-area" min="-oo,-oo" max="oo,oo"/>
+		</apply>
+        <union name="monuments">
+            <region name="pinkmonA"/>
+            <region name="pinkmonB"/>
+            <region name="yellowmonA"/>
+            <region name="yellowmonB"/>
+        </union>
+    </regions>
+    <portals>
+        <portal x="@121" y="@5" z="@-6" yaw="@90">
+            <region name="yellow-portal"/>
+        </portal>
+        <portal x="@35" y="@5" z="@-6" yaw="@-90">
+            <region name="pink-portal"/>
+        </portal>
+    </portals>
+    <blockdrops>
+        <rule>
+            <filter>
+                <block>emerald_block</block>
+            </filter>
+            <replacement>gold_block</replacement>
+        </rule>
+        <rule>
+            <filter>
+                <block>gold_block</block>
+            </filter>
+            <replacement>redstone_block</replacement>
+        </rule>
+        <rule>
+            <filter>
+                <block>redstone_block</block>
+            </filter>
+            <replacement>coal_block</replacement>
+        </rule>
+    </blockdrops>
+    <destroyables name="Monument A" materials="emerald block;gold block;redstone block;coal block" completion="100%">
+        <destroyable owner="pink">
+           <region name="pinkmonA"/>
+        </destroyable>
+        <destroyable owner="yellow">
+           <region name="yellowmonA"/>
+        </destroyable>
+    </destroyables>
+    <destroyables name="Monument B" materials="emerald block;gold block;redstone block;coal block" completion="100%">
+        <destroyable owner="pink">
+           <region name="pinkmonB"/>
+        </destroyable>
+        <destroyable owner="yellow">
+           <region name="yellowmonB"/>
+        </destroyable>
+    </destroyables>
+    <tnt>
+        <instantignite>off</instantignite>
+        <blockdamage>on</blockdamage>
+        <yield>0</yield>
+    </tnt>
+    <itemremove>
+        <item>log</item>
+        <item>wood</item>
+        <item>cooked_beef</item>
+        <item>glass</item>
+        <item>golden apple</item>
+        <item>diamond sword</item>
+        <item>arrow</item>
+        <item>iron pickaxe</item>
+        <item>diamond axe</item>
+        <item>bow</item>
+    </itemremove>
+    <toolrepair>
+        <tool>diamond sword</tool>
+        <tool>bow</tool>
+        <tool>diamond axe</tool>
+        <tool>iron pickaxe</tool>
+    </toolrepair>
+    <timelock>on</timelock>
+</map>
