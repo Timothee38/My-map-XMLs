@@ -49,17 +49,20 @@
         <cuboid name="pinkmonB" min="44,9,-30" max="41,11,-33"/>
         <cuboid name="yellowmonA" min="113,9,-30" max="116,11,-33"/>
         <cuboid name="yellowmonB" min="113,9,20" max="116,11,17"/>
-        <cuboid name="pink-portal" min="21,24,8" max="19,26,-5"/>
-        <cuboid name="yellow-portal" min="137,24,-7" max="137,25,-7"/>
+        <cuboid name="pink-portal" min="20,24,-9" max="19,28,-4"/>
+        <cuboid name="yellow-portal" min="137,24,-4" max="138,28,-9"/>
         <cuboid name="playable" min="124,0,-41" max="32,20,-136"/>
 		<rectangle name="pinkspawn" min="32,28" max="-3,-45"/>
         <rectangle name="yellowspawn" min="124,-41" max="164,32"/>
-		<union name="play">
-			<region name="pinkspawn" />
-			<region name="yellowspawn" />
-			<region name="playable" />
-		</union>
-        <apply block="deny-all"><negative><region name="play"/></negative></apply>
+        <apply block="deny-all">
+		    <negative>
+		    <union>
+			    <region name="pinkspawn" />
+			    <region name="yellowspawn" />
+			    <region name="playable" />
+		    </union>
+			</negative>
+		</apply>
         <apply block="only-iron" message="You may not break or place anything else then iron blocks here.">
             <union>
                 <region name="pinkspawn" />
