@@ -3,8 +3,10 @@
 <name>Blasternauts Candorem</name>
 <version>1.0</version>
 <objective>Kill as many people as you can.</objective>
-<author>Timothee38</author>
-<author>Dracoheart2</author>
+<authors>
+	<author>Timothee38</author>
+	<author>Dracoheart2</author>
+</authors>
 <teams>
      <team color="dark red" max="17" max-overfill="20">Red Team</team>
 	 <team color="dark aqua" max="17" max-overfill="20">Blue Team</team>
