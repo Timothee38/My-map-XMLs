@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<map proto="1.3.2">
+<name>Enclavés</name>
+<version>1.0.0</version> 
+<objective>Be the team with the least amount of deaths after 10 minutes..</objective>
+
+<authors>
+    <author>Timothee38</author> 
+	<author>Jon_Fam</author> 
+	<author>salalu</author> 
+</authors>
+<rules>
+    <rule>Do not hide, it's a TDM, go and fight!</rule>
+</rules>
+<teams>
+   <team color="yellow" max="30" max-overfill="35">Yellow Team</team>
+   <team color="lime" max="30" max-overfill="35">Lime Team</team>
+</teams>
+
+<kits>
+    <kit name="spawn">
+        <item slot="0">stone sword</item>
+        <item slot="1">bow</item>
+        <item slot="28" amount="32">arrow</item>
+        <item slot="2" amount="2">TNT</item>
+        <item slot="3" amount="3">golden apple</item>
+        <item slot="4" name="TNT Defuser" lore="`7Right click to defuse teammate's TNT">shears</item>
+        <item slot="7" damage="8194">potion</item>
+        <potion duration="5">heal</potion>
+        <potion duration="10">damage resistance</potion>
+    </kit>
+    <kit name="yellow" parents="spawn">
+        <helmet color="E5E533" damage="-3000">leather helmet</helmet>
+        <chestplate color="E5E533" enchantment="protection explosions:3" damage="-3000">leather chestplate</chestplate>
+        <leggings color="E5E533" damage="-3000">leather leggings</leggings>
+        <boots color="E5E533" damage="-3000">leather boots</boots>
+    </kit>
+    <kit name="lime" parents="spawn">
+        <helmet color="7FCC19" damage="-3000">leather helmet</helmet>
+        <chestplate color="7FCC19" enchantment="protection explosions:3" damage="-3000">chainmail chestplate</chestplate>
+        <leggings color="7FCC19" damage="-3000">leather leggings</leggings>
+        <boots color="7FCC19" damage="-3000">leather boots</boots>
+    </kit>
+</kits>
+
+<spawns>
+	<spawn team="yellow" kit="yellow">
+	    <cuboid min="327,6,-556" max="331,6,-553"/>
+		<cuboid min="310,5,-542" max="307,5,-539"/>
+		<cuboid min="269,6,-536" max="272,6,-539"/>
+	</spawn>
+	<spawn team="lime" kit="lime">
+	    <cuboid min="314,5,-620" max="309,5,-616"/>
+		<cuboid min="295,9,-620" max="293,9,-622"/>
+		<cuboid min="281,4,-604" max="278,4,-607"/>
+	</spawn>
+	<default yaw="-180">
+	    <cuboid min="285,65,-583" max="287,65,-582"/>
+	</default>
+</spawns>
+<filters>
+    <filter name="only-TNT-and-grass" parents="deny-all">
+	    <allow>
+		    <block>TNT</block>
+		    <block>GRASS</block>
+		</allow>
+	</filter>
+</filters>
+
+<regions>
+    <apply block="only-TNT-and-grass">
+	    <rectangle name="main" min="-oo,-oo" max="oo,oo"/>
+	</apply>
+</regions>
+
+<score>
+    <time>10m</time>
+</score>
+
+<killreward>
+    <item>golden apple</item>
+	<item amount="10">arrow</item>
+</killreward>
+<tnt>
+    <instantignite>on</instantignite>
+    <blockdamage>off</blockdamage>
+</tnt>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<disabledamage>
+    <damage ally="true" self="false" enemy="false" other="false">block explosion</damage>
+</disabledamage>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+    <tool>shears</tool>
+</toolrepair>
+<itemremove>
+    <item>leather helmet</item>
+    <item>chainmail chestplate</item>
+    <item>leather leggings</item>
+    <item>leather boots</item>
+	<item>arrow</item>
+    <item>glass bottle</item>
+    <item>golden apple</item>
+</itemremove>
+
+</map>
