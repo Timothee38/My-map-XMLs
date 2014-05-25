@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<map proto="1.3.2">
+<name>Inclutus</name>
+<version>1.0.0</version>
+<objective>Capture the enemies wool and return it to your base.</objective>
+
+<authors>
+    <author>Timothee38</author>
+</authors>
+
+<contributors>
+    <contributor contribution="Feedback">pepsidawg00</contributor>
+	<contributor contribution="Feedback">ItsMiiOlly</contributor>
+	<contributor contribution="Feedback">Stealth5061</contributor>
+</contributors>
+
+<teams>
+   <team color="yellow" max="32" max-overfill="40">Yellow Team</team>
+   <team color="magenta" max="32" max-overfill="40">Magenta Team</team>
+</teams>
+
+<kits>
+    <kit name="spawn">
+        <item slot="0">iron sword</item>
+        <item slot="1" enchantment="arrow infinite:1" damage="-3000">bow</item>
+        <item slot="28">arrow</item>
+        <item slot="2" enchantment="durability:3;dig speed:1" damage="-3000">iron pickaxe</item>
+        <item slot="3" damage="-3000">iron axe</item>
+        <item slot="4" amount="64">log</item>
+        <item slot="5" amount="64">glass</item>
+        <item slot="8" amount="64">cookie</item>
+    </kit>
+	<kit name="yellow" parent="spawn">
+	    <chestplate color="E5E533" damage="-3000"></chestplate>
+	</kit>
+	<kit name="magenta" parent="spawn">
+	    <chestplate color="B24CD8" damage="-3000"></chestplate>
+	</kit>
+</kits>
+
+<spawns>
+    <spawn team="yellow" kit="yellow" yaw="-90">
+        <cuboid min="-175,15,79" max="-173,15,81"/>
+    </spawn>
+    <spawn team="magenta" kit="magenta" yaw="90">
+        <cuboid min="-51,15,81" max="-53,15,79"/>
+    </spawn>
+    <default yaw="0">
+        <cuboid min="-113,19,20" max="-111,19,22"/>
+    </default>
+</spawns>
+
+<filters>
+    <filter name="no-void" parents="allow-all">
+        <deny><void/></deny>
+    </filter>
+</filters>
+
+<regions>
+    <union name="middle-lanes">
+	    <rectangle name="lane-1" min="-105,66" max="-121,72"/>
+		<rectangle name="lane-2" min="-122,95" max="-105,89"/>
+	</union>
+	<apply block="no-void">
+	    <negative><region name="middle-lanes"/></negative>
+	</apply>
+</regions>
+
+</map>
