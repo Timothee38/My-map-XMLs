@@ -28,7 +28,7 @@
         <item slot="3" damage="-3000">iron axe</item>
         <item slot="4" amount="64">log</item>
         <item slot="5" amount="64">glass</item>
-        <item slot="8" amount="64">cookie</item>
+        <item slot="8" amount="64">golden carrot</item>
     </kit>
 	<kit name="yellow" parent="spawn">
 	    <chestplate color="E5E533" damage="-3000">leather chestplate</chestplate>
