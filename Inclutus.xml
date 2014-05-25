@@ -54,6 +54,19 @@
     <filter name="no-void" parents="allow-all">
         <deny><void/></deny>
     </filter>
+    <filter name="allow-some" parents="deny-all">
+<allow>
+<block>web</block>
+<block damage="N">wool</block>
+
+</allow>
+</filter>
+<filter name="only-blue-some">
+<all>
+<team>blue</team>
+<filter name="allow-some"/>
+</all>
+</filter>
 </filters>
 
 <regions>
