@@ -31,10 +31,10 @@
         <item slot="8" amount="64">cookie</item>
     </kit>
 	<kit name="yellow" parent="spawn">
-	    <chestplate color="E5E533" damage="-3000"></chestplate>
+	    <chestplate color="E5E533" damage="-3000">leather chestplate</chestplate>
 	</kit>
 	<kit name="magenta" parent="spawn">
-	    <chestplate color="B24CD8" damage="-3000"></chestplate>
+	    <chestplate color="B24CD8" damage="-3000">leather chestplate</chestplate>
 	</kit>
 </kits>
 
@@ -55,18 +55,32 @@
         <deny><void/></deny>
     </filter>
     <filter name="allow-some" parents="deny-all">
-<allow>
-<block>web</block>
-<block damage="N">wool</block>
-
-</allow>
-</filter>
-<filter name="only-blue-some">
-<all>
-<team>blue</team>
-<filter name="allow-some"/>
-</all>
-</filter>
+        <allow>
+            <block>web</block>
+            <block damage="1">wool</block>
+			<block damage="10">wool</block>
+			<block damage="5">wool</block>
+			<block damage="14">wool</block>
+        </allow>
+    </filter>
+    <filter name="only-magenta-some">
+        <all>
+            <team>blue</team>
+            <filter name="allow-some"/>
+        </all>
+    </filter>
+	<filter name="only-yellow-some">
+        <all>
+            <team>blue</team>
+            <filter name="allow-some"/>
+        </all>
+    </filter>
+	<filter name="only-yellow" parents="deny-players">
+	    <allow><team>yellow</team></allow>
+	</filter>
+	<filter name="only-magenta" parents="deny-players">
+	    <allow><team>magenta</team></allow>
+	</filter>
 </filters>
 
 <regions>
@@ -74,9 +88,82 @@
 	    <rectangle name="lane-1" min="-105,66" max="-121,72"/>
 		<rectangle name="lane-2" min="-122,95" max="-105,89"/>
 	</union>
+    <union name="magenta-WR">
+	    <rectangle name="magenta-WR-1" min="-3,64" max="7,50"/>
+	    <rectangle name="magenta-WR-1" min="-3,111" max="7,97"/>
+    </union>
+    <union name="yellow-WR">
+	    <rectangle name="yellow-WR-1" min="-224,50" max="-234,64"/>
+	    <rectangle name="yellow-WR-1" min="-224,97" max="-234,111"/>
+    </union>
+	<union name="magenta-spawn">
+	    <rectangle name="magenta-bridge-1" min="-55,77" max="-50,64"/>
+		<rectangle name="magenta-bridge-2" min="-50,84" max="-55,97"/>
+		<cylinder name="magenta-spawn-base" base="-52,13,80" radius="7" height="200"/>
+	</union>
+	<union name="yellow-spawn">
+	    <rectangle name="yellow-bridge-1" min="-177,77" max="-172,64"/>
+		<rectangle name="yellow-bridge-2" min="-172,84" max="-177,97"/>
+		<cylinder name="yellow-spawn-base" base="-174,13,80" radius="7" height="200"/>
+	</union>
+	<apply enter="only-yellow-some">
+	    <region name="magenta-WR"/>
+	</apply>
+	<apply enter="only-magenta-some">
+	    <region name="yellow-WR"/>
+	</apply>
+	<apply enter="only-magenta">
+	    <region name="magenta-spawn"/>
+	</apply>
+	<apply enter="only-yellow">
+	    <region name="yellow-spawn"/>
+	</apply>
+	<apply block="deny-all">
+	    <region name="magenta-spawn"/>
+		<region name="yellow-spawn"/>
+	</apply>
 	<apply block="no-void">
 	    <negative><region name="middle-lanes"/></negative>
 	</apply>
 </regions>
-
+<wools team="magenta" craftable="false">
+    <wool color="purple">
+        <block>-57,16,80</block>
+    </wool>
+    <wool color="orange">
+        <block>-47,16,80</block>
+    </wool>
+</wools>
+<wools team="yellow" craftable="false">
+    <wool color="red">
+        <block>-179,16,80</block>
+    </wool>
+    <wool color="lime">
+        <block>-169,16,80</block>
+    </wool>
+</wools>
+<renewables>
+    <renewable rate="4">
+        <region name="magenta-WR"/>
+		<region name="yellow-WR"/>
+        <renew>wool:1</renew>
+	    <renew>wool:10</renew>
+	    <renew>wool:5</renew>
+	    <renew>wool:14</renew>
+    </renewable>
+</renewables>
+<itemremove>
+    <item>leather chestplate</item>
+	<item>cookie</item>
+    <item>arrow</item>
+	<item>string</item>
+	<item>leather</item>
+	<item>wool</item>
+</itemremove>
+<toolrepair>
+    <tool>bow</tool>
+	<tool>iron sword</tool>
+	<tool>iron axe</tool>
+	<tool>iron pickaxe</tool>
+</toolrepair>
 </map>
