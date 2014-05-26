@@ -58,5 +58,6 @@
 <disabledamage>
     <damage>fall</damage>
 </disabledamage>
+<friendlyfire>on</friendlyfire>
 <timelock>on</timelock>
 </map>
