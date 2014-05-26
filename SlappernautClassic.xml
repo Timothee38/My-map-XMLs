@@ -40,6 +40,12 @@
         <cuboid min="-11,38,-90" max="-113,38,-92"/>
     </default>
 </spawns>
+<regions>
+    <rectangle name="main-area" min="-oo,-oo" max="oo,oo"/>
+    <apply block="deny-all">
+	    <region name="main-area"/>
+	</apply>
+</regions>
 <disabledamage>
     <damage>fall</damage>
 </disabledamage>
