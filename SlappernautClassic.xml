@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<map proto="1.3.2">
+<name>SN: Classic</name>
+<version>1.0.0</version>
+<objective>Slap all other slappernauts off the arena.</objective>
+<include src="tutorial.xml"/>
+<authors>
+    <author>Timothee38</author>
+</authors>
+<rules>
+    <rule>Fall damage is disabled!</rule>
+</rules>
+<blitz>
+    <time>10m</time>
+    <lives>2</lives>
+    <title>Slappernauts</title>
+</blitz>
+<include src="blitz-global.xml"/>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<kits>
+    <kit name="slappernauts">
+	    <potion duration="oo" amplifier="3">jump</potion>
+		<potion duration="oo" amplifier="25">heal</potion>
+        <potion duration="oo" amplifier="25">damage resistance</potion>
+	</kit>
+</kits>
+<teams>
+   <team color="dark aqua" max="20">Slappernauts</team>
+</teams>
+<spawns>
+    <spawn team="Slappernauts" kit="slappernauts" yaw="133">
+        <cylinder base="-112,5,-78" radius="2" height="0"/>
+    </spawn>
+	<spawn team="Slappernauts" kit="slappernauts" yaw="-52">
+        <cylinder base="-111,5,-101" radius="2" height="0"/>
+    </spawn>
+    <default yaw="-180">
+        <cuboid min="-11,38,-90" max="-113,38,-92"/>
+    </default>
+</spawns>
+<disabledamage>
+    <damage>fall</damage>
+</disabledamage>
+<timelock>on</timelock>
+</map>
