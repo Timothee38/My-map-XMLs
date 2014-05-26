@@ -25,12 +25,15 @@
 		<potion duration="oo" amplifier="25">heal</potion>
         <potion duration="oo" amplifier="25">damage resistance</potion>
 	</kit>
+	<kit name="off">
+	    <potion amplifier="0" duration="0" ambient="true">damage resistance</potion>
+	</kit>
 </kits>
 <teams>
    <team color="dark aqua" max="20">Slappernauts</team>
 </teams>
 <spawns>
-    <spawn team="Slappernauts" kit="slappernauts" yaw="133">
+    <spawn team="Slappernauts" yaw="133">
         <cylinder base="-112,5,-78" radius="2" height="0"/>
     </spawn>
 	<spawn team="Slappernauts" kit="slappernauts" yaw="-52">
@@ -41,10 +44,16 @@
     </default>
 </spawns>
 <regions>
-    <rectangle name="main-area" min="-oo,-oo" max="oo,oo"/>
+    <cuboid name="main-area" min="-145,1,-122" max="-79,200,-56"/>
     <apply block="deny-all">
 	    <region name="main-area"/>
 	</apply>
+	<apply kit="slappernauts">
+		<region name="main-area"/>
+    </apply>	
+	<apply kit="off">
+		<negative><region name="main-area"/></negative>
+    </apply>
 </regions>
 <disabledamage>
     <damage>fall</damage>
