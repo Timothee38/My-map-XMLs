@@ -9,7 +9,7 @@
 </authors>
 
 <contributors>
-    <contributor contribution="Feedback">pepsidawg00</contributor>
+        <contributor contribution="Feedback">pepsidawg00</contributor>
 	<contributor contribution="Feedback">ItsMiiOlly</contributor>
 	<contributor contribution="Feedback">Stealth5061</contributor>
 </contributors>
@@ -30,10 +30,10 @@
         <item slot="5" amount="64">glass</item>
         <item slot="8" amount="64">golden carrot</item>
     </kit>
-	<kit name="yellow" parent="spawn">
+	<kit name="yellow" parents="spawn">
 	    <chestplate color="E5E533" damage="-3000">leather chestplate</chestplate>
 	</kit>
-	<kit name="magenta" parent="spawn">
+	<kit name="magenta" parents="spawn">
 	    <chestplate color="B24CD8" damage="-3000">leather chestplate</chestplate>
 	</kit>
 </kits>
@@ -58,9 +58,9 @@
         <allow>
             <block>web</block>
             <block damage="1">wool</block>
-			<block damage="10">wool</block>
-			<block damage="5">wool</block>
-			<block damage="14">wool</block>
+	    <block damage="10">wool</block>
+	    <block damage="5">wool</block>
+	    <block damage="14">wool</block>
         </allow>
     </filter>
     <filter name="only-magenta-some">
@@ -86,7 +86,7 @@
 <regions>
     <union name="middle-lanes">
 	    <rectangle name="lane-1" min="-105,66" max="-121,72"/>
-		<rectangle name="lane-2" min="-122,95" max="-105,89"/>
+	    <rectangle name="lane-2" min="-122,95" max="-105,89"/>
 	</union>
     <union name="magenta-WR">
 	    <rectangle name="magenta-WR-1" min="-3,64" max="7,50"/>
@@ -98,13 +98,13 @@
     </union>
 	<union name="magenta-spawn">
 	    <rectangle name="magenta-bridge-1" min="-55,77" max="-50,64"/>
-		<rectangle name="magenta-bridge-2" min="-50,84" max="-55,97"/>
-		<cylinder name="magenta-spawn-base" base="-52,13,80" radius="7" height="200"/>
+	    <rectangle name="magenta-bridge-2" min="-50,84" max="-55,97"/>
+	    <cylinder name="magenta-spawn-base" base="-52,13,80" radius="7" height="200"/>
 	</union>
 	<union name="yellow-spawn">
 	    <rectangle name="yellow-bridge-1" min="-177,77" max="-172,64"/>
-		<rectangle name="yellow-bridge-2" min="-172,84" max="-177,97"/>
-		<cylinder name="yellow-spawn-base" base="-174,13,80" radius="7" height="200"/>
+	    <rectangle name="yellow-bridge-2" min="-172,84" max="-177,97"/>
+	    <cylinder name="yellow-spawn-base" base="-174,13,80" radius="7" height="200"/>
 	</union>
 	<apply enter="only-yellow-some">
 	    <region name="magenta-WR"/>
@@ -120,7 +120,7 @@
 	</apply>
 	<apply block="deny-all">
 	    <region name="magenta-spawn"/>
-		<region name="yellow-spawn"/>
+	    <region name="yellow-spawn"/>
 	</apply>
 	<apply block="no-void">
 	    <negative><region name="middle-lanes"/></negative>
@@ -155,7 +155,7 @@
 <itemremove>
     <item>leather chestplate</item>
 	<item>cookie</item>
-    <item>arrow</item>
+        <item>arrow</item>
 	<item>string</item>
 	<item>leather</item>
 	<item>wool</item>
