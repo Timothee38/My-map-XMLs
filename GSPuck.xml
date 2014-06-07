@@ -104,4 +104,5 @@
             <region name="blue-tp-up" />
         </portal>
     </portals>
+    <timelock>on</timelock>
 </map>
