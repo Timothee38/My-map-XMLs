@@ -1,0 +1,107 @@
+<map proto="1.3.2">
+<name>GS: Puck!</name>
+<version>1.0.0</version>
+<objective>Kill the enemy's squadron!</objective>
+<include src="gs-classes.xml"/>
+<authors>
+    <author>Timothee38</author>
+</authors>
+<teams>
+    <team color="blue" max="8">Blue Team</team>
+    <team color="dark red" max="8">Red Team</team>
+</teams>
+<spawns>
+    <spawn team="red" yaw="90">
+         <cuboid min="66,1,9" max="64,1,7"/>
+    </spawn>
+    <spawn team="blue" yaw="-90">
+        <cuboid min="14,1,-2" max="16,1,0"/>
+    </spawn>
+    <default yaw="-180">
+        <cuboid min="42,21,5" max="39,21,2"/>
+    </default>
+</spawns>
+<filters>
+    <filter name="deny-icemelt" parents="deny-all">
+        <not><all>
+            <any>
+                <filter name="allow-world"/>
+                <filter name="deny-all"/>
+            </any>
+            <block>ice</block>
+        </all></not>
+    </filter>
+</filters>
+<regions>
+    <rectangle name="main-area" min="-oo,-oo" max="oo,oo"/>
+    <cuboid name="no-entrance" min="-oo,8.5,-oo" max="oo,oo,oo"/>
+	<union name="red-tp-up">
+	    <cuboid min="45,1,-13" max="43,3,-15"/>
+		<cuboid min="51,1,-13" max="53,3,-15"/>
+		<cuboid min="62,1,0" max="34,3,2"/>
+		<cuboid min="55,1,19" max="57,3,21"/>
+		<cuboid min="49,1,20" max="51,3,22"/>
+		<cuboid min="43,1,20" max="45,3,22"/>
+	</union>
+	<union name="blue-tp-up">
+	    <cuboid min="35,1,20" max="37,3,22"/>
+		<cuboid min="29,1,20" max="31,3,22"/>
+		<cuboid min="18,1,6" max="20,3,8"/>
+		<cuboid min="25,1,-12" max="23,3,-14"/>
+		<cuboid min="31,1,-11" max="29,3,-13"/>
+		<cuboid min="37,1,-11" max="35,3,-13"/>
+	</union>
+	<union name="red-tp-down">
+	    <cuboid min="43,5,27" max="45,9,29"/>
+		<cuboid min="49,5,27" max="51,9,29"/>
+		<cuboid min="58,5,26" max="60,9,28"/>
+		<cuboid min="68,5,12" max="70,9,14"/>
+		<cuboid min="68,5,3" max="70,9,1"/>
+		<cuboid min="68,5,-2" max="70,9,-4"/>
+		<cuboid min="57,5,-20" max="55,9,-22"/>
+		<cuboid min="51,5,-20" max="49,9,-22"/>
+	</union>
+	<union name="blue-tp-down">
+	    <cuboid min="37,5,-20" max="35,9,-22"/>
+		<cuboid min="31,5,-20" max="29,9,-22"/>
+		<cuboid min="22,5,-19" max="20,9,-21"/>
+		<cuboid min="11,5,-5" max="9,9,-3"/>
+		<cuboid min="11,5,3" max="9,9,5"/>
+		<cuboid min="11,5,9" max="9,9,11"/>
+		<cuboid min="23,5,27" max="25,9,29"/>
+	    <cuboid min="29,5,27" max="31,9,29"/>
+	</union>
+    <apply block="deny-icemelt">
+        <region name="main-area"/>
+    </apply>
+    <apply enter="deny-players" message="You may not leave the arena.">
+        <region name="no-entrance"/>
+    </apply>
+</regions>
+    <portals>
+        <portal x="@50" y="@1" z="@9" yaw="@90">
+            <region name="red-tp-down">
+        </portal>
+		<portal x="@50" y="@1" z="@-2" yaw="@90">
+            <region name="red-tp-down">
+        </portal>
+		<portal x="@61" y="@4" z="@-12" yaw="@90">
+            <region name="red-tp-up">
+        </portal>
+		<portal x="@61" y="@4" z="@19" yaw="@90">
+            <region name="red-tp-up">
+        </portal>
+		<portal x="@30" y="@1" z="@-2" yaw="@-90">
+            <region name="blue-tp-down">
+        </portal>
+		<portal x="@30" y="@1" z="@9" yaw="@-90">
+            <region name="blue-tp-down">
+        </portal>
+		<portal x="@19" y="@4" z="@19" yaw="@-90">
+            <region name="blue-tp-up">
+        </portal>
+		<portal x="@19" y="@4" z="@-12" yaw="@-90">
+            <region name="blue-tp-up">
+        </portal>
+    </portals>
+</map>
