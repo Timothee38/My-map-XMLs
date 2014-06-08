@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<map proto="1.3.2">
+<name>Persisto</name> 
+<version>1.1.3</version> 
+<objective>Capture both wools to win.</objective>
+<authors>
+    <author contribution="Aesthetics, XML and gameplay ideas.">Timothee38</author>
+	<author contribution="Mostly gameplay and frontlines aesthetics.">auxdempster</author>
+	<author contribution="Chest filling and spawn aesthetics.">re_cel</author>
+	<author contribution="Building and gameplay ideas.">Dracoheart2</author>
+</authors>
+<wools team="red">
+    <wool color="yellow">
+        <block>15,11,146</block>
+    </wool>
+    <wool color="magenta">
+        <block>7,11,146</block>
+    </wool>
+</wools>
+<wools team="blue">
+    <wool color="orange">
+        <block>15,11,26</block>
+    </wool>
+    <wool color="lime">
+        <block>7,11,26</block>
+    </wool>
+</wools>
+<teams>
+   <team color="dark red" max="12" max-overfill="15">Red Team</team>
+   <team color="blue" max="12" max-overfill="15">Blue Team</team>
+</teams>
+<kits>
+    <kit name="spawn" force="true">
+        <item slot="0" damage="-3000">stone sword</item>
+		<item slot="2" damage="-3000">bow</item>
+		<item slot="3" damage="-3000" enchantment="durability:2">iron pickaxe</item>
+        <item slot="4" amount="32">cooked beef</item>
+		<item slot="5" amount="32">log</item>
+		<item slot="6" amount="32">glass</item>
+		<item slot="28" amount="64">arrow</item>
+        <potion duration="5" amplifier="1">heal</potion>
+    </kit>
+	  <kit name="red" parents="spawn">
+		<chestplate color="cd0000">leather chestplate</chestplate>
+	</kit>
+	<kit name="blue" parents="spawn">
+		<chestplate color="0066cc">leather chestplate</chestplate>
+	</kit>
+</kits>
+<spawns>
+    <spawn team="red" kit="red" yaw="180">
+        <cuboid min="13,10,149" max="10,10,147"/>
+    </spawn>
+    <spawn team="blue" kit="blue" yaw="0">
+        <cuboid min="10,10,24" max="13,10,26"/>
+    </spawn>
+    <default yaw="0">
+        <cuboid min="13,38,85" max="10,38,88"/>
+    </default>
+</spawns>
+<filters>
+    <filter name="no-void" parents="allow-all">
+        <deny><void/></deny>
+    </filter>
+	<filter name="only-red" parents="deny-players">
+		<allow>
+			<team>red</team>
+		</allow>
+	</filter>
+	<filter name="only-blue" parents="deny-players">
+		<allow>
+			<team>blue</team>
+		</allow>
+	</filter>
+	<filter name="allow-some" parents="deny-all">
+	    <allow>
+		    <block>web</block>
+			<block>wool</block>
+		</allow>
+	</filter>
+</filters>
+<!--Complicated regions-->
+<regions>
+	<union name="only-red">
+	    <rectangle min="60,63" max="73,38" />
+		<rectangle min="-36,38" max="-50,63" />
+	</union>
+	<union name="only-blue">
+	    <rectangle min="-36,110" max="-50,135" />
+		<rectangle min="60,135" max="73,110" />
+	</union>
+	<union name="middle-bridges">
+	    <rectangle min="10,102" max="-1,93" />
+		<rectangle min="-1,80" max="10,71" />
+		<rectangle min="13,71" max="24,80" />
+		<rectangle min="24,93" max="13,102" />
+	</union>
+	<union name="no-spawn-grief">
+	    <rectangle min="24,29" max="-1,20" />
+		<rectangle min="-1,144" max="24,153" />
+	</union>
+	<apply block="no-void" message="You may not edit the void area">
+	    <negative><region name="middle-bridges" /></negative>
+	</apply>
+	<apply enter="only-red" message="You may not enter your own wool rooms.">
+	    <region name="only-red" />
+	</apply>
+	<apply enter="only-blue" message="You may not enter your own wool rooms.">
+	    <region name="only-blue" />
+	</apply>
+	<apply block="deny-all">
+	    <region name="no-spawn-grief"/>
+	</apply>
+	<apply block="allow-some">
+	    <region name="only-red" />
+		<region name="only-blue" />
+	</apply>
+</regions>
+<maxbuildheight>30</maxbuildheight>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+</toolrepair>
+<itemremove>
+    <item>arrow</item>
+    <item>cooked beef</item>
+    <item>leather chestplate</item>
+    <item>iron chestplate</item>
+	<item>stone sword</item>
+	<item enchantment="durability: 2">iron pickaxe</item>
+	<item>wood</item>
+	<item>log</item>
+	<item>glass</item>
+	<item>sandstone block</item>
+	<item>redstone block</item>
+	<item>lapis block</item>
+	<item>coal block</item>
+	<item>sapling</item>
+	<item>apple</item>
+	<item>22</item>
+</itemremove>
+<timelock>on</timelock>
+</map>
