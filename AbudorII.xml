@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map proto="1.3.3">
+    <name>Abudor II</name>
+    <version>1.0.0</version>
+    <objective>Capture the hills to score points and win.</objective>
+    <authors>
+      <author>Timothee38</author>
+      <author>OllieGamerZ</author>
+      <author>Dracoheart2</author>
+    </authors>
+    <contributors>
+        <contributor contribution="potions and spawners.">_IQ</contributor>
+    </contributors>
+    <rules>
+        <rule>Fall damage is disabled.</rule>
+    </rules>
+    <teams>
+      <team color="dark red" max="12" max-overfill="16">Red Team</team>
+      <team color="blue" max="12" max-overfill="16">Blue Team</team>
+      <team color="yellow" max="12" max-overfill="16">Yellow Team</team>
+      <team color="lime" max="12" max-overfill="16">Green Team</team>
+    </teams>
+    <kits>
+      <kit name="spawn" force="true">
+          <item slot="0" damage="-3000">stone sword</item>
+          <item slot="1" damage="-3000" enchantement="arrow infinite:1">bow</item>
+          <item slot="2" amount="32">golden carrot</item>
+          <item slot="3" amount="2">golden apple</item>
+          <item slot="28">arrow</item>
+          <chestplate damage="-3000">iron chestplate</chestplate>
+      </kit>
+      <kit name="red" parents="spawn">
+          <helmet damage="14">stained glass</helmet>
+          <boots color="cd0000" damage="-3000">leather boots</boots>
+          <leggings color="cd0000" damage="-3000">leather leggings</leggings>
+      </kit>
+      <kit name="green" parents="spawn">
+          <helmet damage="5">stained glass</helmet>
+          <boots color="7FCC19" damage="-3000">leather boots</boots>
+          <leggings color="7FCC19" damage="-3000">leather leggings</leggings>
+      </kit>
+      <kit name="yellow" parents="spawn">
+          <helmet damage="4">stained glass</helmet>
+          <boots color="E5E533" damage="-3000">leather boots</boots>
+          <leggings color="E5E533" damage="-3000">leather leggings</leggings>
+      </kit>
+      <kit name="blue" parents="spawn">
+          <helmet damage="11">stained glass</helmet>
+          <boots color="334CB2" damage="-3000">leather boots</boots>
+          <leggings color="334CB2" damage="-3000">leather leggings</leggings>
+      </kit>
+    </kits>
+    <spawns>
+      <spawn team="blue" kit="blue" yaw="45">
+        <point>17,14,-105</point>
+      </spawn>
+      <spawn team="green" kit="green" yaw="-135">
+        <point>-66,14,-21</point>
+      </spawn>
+      <spawn team="yellow" kit="yellow" yaw="-45">
+        <point>-66,14,-105</point>
+      </spawn>
+      <spawn team="red" kit="red" yaw="135">
+          <point>17,14,-21</point>
+      </spawn>
+      <default yaw="90">
+          <point>-24,42,-63</point>
+      </default>
+    </spawns>
+    <filters>
+        <filter name="only-red" parents="deny-players">
+            <allow><team>red</team></allow>
+        </filter>
+        <filter name="only-blue" parents="deny-players">
+            <allow><team>blue</team></allow>
+        </filter>
+        <filter name="only-green" parents="deny-players">
+            <allow><team>green</team></allow>
+        </filter>
+        <filter name="only-yellow" parents="deny-players">
+            <allow><team>yellow</team></allow>
+        </filter>
+    </filters>
+    <regions>
+      <apply block="deny-blocks">
+        <rectangle name="playable" min="-oo,-oo" max="oo,oo"/>
+      </apply>
+      <apply enter="only-yellow" message="You may not enter the ennemy's spawn.">
+          <rectangle min="-63,-67" max="-69,-100"/>
+          <rectangle min="-62,-102" max="-28,-108"/>
+      </apply>
+      <apply enter="only-red" message="You may not enter the ennemy's spawn.">
+          <rectangle min="13,-59" max="21,-26z"/>
+          <rectangle min="13,-25" max="-20,-18"/>
+      </apply>
+      <apply enter="only-blue" message="You may not enter the ennemy's spawn.">
+          <rectangle min="-20,-101" max="13,-109"/>
+          <rectangle min="-21,-101" max="14,-67"/>
+      </apply>
+      <apply enter="only-green" message="You may not enter the ennemy's spawn.">
+          <rectangle min="-28,-24" max="-62,-17"/>
+          <rectangle min="-62,-25" max="-69,-59"/>
+      </apply>
+    </regions>
+    <king>
+      <hills>
+        <hill name="Blue's Side" capture-time="10s" points="1">
+          <capture>
+            <cuboid min="-4,5,-83" max="5,10,-93"/>
+          </capture>
+          <progress>
+            <cuboid min="-4,5,-83" max="5,6,-93"/>
+          </progress>
+          <captured>
+            <cuboid min="-4,5,-83" max="5,26,-93"/>
+          </captured>
+        </hill>
+        <hill name="Yellow's Side" capture-time="10s" points="1">
+          <capture>
+            <cuboid min="-44,5,-83" max="-54,10,-93"/>
+          </capture>
+          <progress>
+            <cuboid min="-44,5,-83" max="-54,6,-93"/>
+          </progress>
+          <captured>
+            <cuboid min="-44,5,-83" max="-54,26,-93"/>
+          </captured>
+        </hill>
+        <hill name="Red's Side" capture-time="10s" points="1">
+          <capture>
+            <cuboid min="-4,5,-43" max="5,10,-33"/>
+          </capture>
+          <progress>
+            <cuboid min="-4,5,-43" max="5,6,-33"/>
+          </progress>
+          <captured>
+            <cuboid min="-4,5,-43" max="5,26,-33"/>
+          </captured>
+        </hill>
+        <hill name="Green's Side" capture-time="10s" points="1">
+          <capture>
+            <cuboid min="-44,5,-43" max="-54,10,-33"/>
+          </capture>
+          <progress>
+            <cuboid min="-44,5,-43" max="-54,6,-33"/>
+          </progress>
+          <captured>
+            <cuboid min="-44,5,-43" max="-54,26,-33"/>
+          </captured>
+        </hill>
+      </hills>
+    </king>
+    <score>
+      <limit>500</limit>
+      <king/>
+    </score>
+    <killreward>
+      <item>golden apple</item>
+    </killreward>
+    <itemremove>
+      <item>leather boots</item>
+      <item>leather leggings</item>
+      <item>chainmail chestplate</item>
+      <item>golden carrot</item>
+      <item>golden apple</item>
+      <item>stained glass</item>
+    </itemremove>
+    <toolrepair>
+      <tool>stone sword</tool>
+      <tool>bow</tool>
+    </toolrepair>
+    <timelock>on</timelock>
+    <disabledamage>
+        <damage>fall</damage>
+    </disabledamage>
+</map>
