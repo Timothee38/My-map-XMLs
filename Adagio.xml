@@ -37,8 +37,12 @@
 </spawns>
 <filters>     
     <filter name="no-breakSB">
-        <block>mob spawner</block>
-        <block>beacon</block>
+    	<not>
+    		<any>
+        		<block>mob spawner</block>
+        		<block>beacon</block>
+        	</any>
+        </not>
     </filter>         
     <filter name="only-iron">
         <block>iron block</block>
@@ -48,8 +52,8 @@
     <cuboid name="pink-portal" min="20,24,-9" max="19,28,-4"/>
     <cuboid name="yellow-portal" min="137,24,-4" max="138,28,-9"/>  
     <apply block="deny-world">
-	    <negative>
-		    <rectangle name="playable" min="33,-41" max="124,28"/>
+		<negative>
+			<rectangle name="playable" min="33,-41" max="124,28"/>
 		</negative>
 	</apply>
     <apply block="only-iron" message="You may not break or place anything else then iron blocks here.">
