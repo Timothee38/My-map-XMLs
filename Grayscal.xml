@@ -1,0 +1,289 @@
+<map proto="1.3.1">
+<name>Grayscale</name>
+<version>1.0</version>
+<objective>Capture the enemy team's wools!</objective>
+<authors>
+<author>iLifting</author>
+<author>Sbongkh</author>
+<author>matic0basle</author>
+<author>Alxlre</author>
+</authors>
+<contributors>
+<contributor contribution="Ideas,theme help,suggestions">Arzanex</contributor>
+<contributor contribution="Minor ideas help and moral support">_IQ</contributor>
+<contributor contribution="XML">Reshif</contributor>
+</contributors>
+<rules>
+<rule>You may not blow up your own side with TNT!</rule>
+<rule>You may not camp other team's portal exits!</rule>
+</rules>
+<include src="tutorial.xml"/>
+<tutorial>
+<stage title="Capture the Wool">
+<message>
+<line>`rThis map is a `a`lCapture the Wool `r(CTW) map</line>
+<line>
+The objective is to grab the two wools on the other team's side and return it to your base.
+</line>
+</message>
+</stage>
+<stage title="Spawns">
+<message>
+<line>'rThis is an example of a team spawn.</line>
+<line>
+In the team spawn, you will find Iron supplies for armor making, supplies for cannoning and defences, and Wool Placing monuments.
+</line>
+<line>
+The team spawn contains 2 portals which you can go through. To get out of the spawn and to get back to it, use the portals in the spawn and on the side lanes.
+</line>
+</message>
+<teleport>
+<point pitch="10" yaw="-45">-9.5,40,174.5</point>
+</teleport>
+</stage>
+<stage title="Wool Rooms">
+<message>
+<line>'rThese are blue's wool rooms.</line>
+<line>
+To win the game, you must enter the wool rooms on the enemy team side, and bring the wools inside of them back.
+</line>
+<line>
+In the wool rooms you can also find useful supplies to help you on your way back.
+</line>
+</message>
+<teleport>
+<point pitch="0" yaw="180">0,22,-120</point>
+</teleport>
+</stage>
+<stage title="Middle island and TNT">
+<message>
+<line>'rThis is the middle island.</line>
+<line>
+The middle island contains 6 chests with TNT and Cannoning supplies.
+</line>
+<line>
+Use the TNT carefully, and do not blow it on your own side!
+</line>
+</message>
+<teleport>
+<point pitch="10" yaw="125">24,20,18</point>
+</teleport>
+</stage>
+<stage title="TNT Placement">
+<message>
+<line>
+You are not able to place TNT on your own side, besides on the frontline.
+</line>
+<line>
+You can also place TNT on the middle island and the whole enemy side, expect for the wool rooms.
+</line>
+</message>
+</stage>
+</tutorial>
+<teams>
+<team color="dark red" max="32" max-overfill="32">Red Team</team>
+<team color="blue" max="32" max-overfill="32">Blue Team</team>
+</teams>
+<kits>
+<kit name="spawn">
+<item slot="0">iron sword</item>
+<item slot="1">bow</item>
+<item amount="64" slot="28">arrow</item>
+<item enchantment="durability:2;dig speed:1" slot="2">iron pickaxe</item>
+<item slot="3">iron axe</item>
+<item slot="4">shears</item>
+<item amount="64" slot="5">stone</item>
+<item amount="64" slot="6">wood</item>
+<item slot="7">golden apple</item>
+<item amount="64" slot="8">cooked beef</item>
+<potion amplifier="1" duration="2">heal</potion>
+<potion duration="4">damage resistance</potion>
+</kit>
+<kit name="red" parents="spawn">
+<helmet color="cd0000">leather helmet</helmet>
+<chestplate color="cd0000">leather chestplate</chestplate>
+</kit>
+<kit name="blue" parents="spawn">
+<helmet color="0066cc">leather helmet</helmet>
+<chestplate color="0066cc">leather chestplate</chestplate>
+</kit>
+</kits>
+<toolrepair>
+<tool>iron sword</tool>
+<tool>iron pickaxe</tool>
+<tool>iron axe</tool>
+<tool>bow</tool>
+</toolrepair>
+<itemremove>
+<item>leather helmet</item>
+<item>leather chestplate</item>
+<item>shears</item>
+</itemremove>
+<spawns>
+<spawn kit="red" team="red" yaw="180">
+<cylinder base="0,35,183" height="1" radius="4"/>
+</spawn>
+<spawn kit="blue" team="blue" yaw="0">
+<cylinder base="0,35,-183" height="1" radius="4"/>
+</spawn>
+<default yaw="-90">
+<cylinder base="-55.5,47,0" height="1" radius="2"/>
+</default>
+</spawns>
+<filters>
+<filter name="only-red" parents="deny-players deny-world deny-blocks">
+<allow>
+<team>red</team>
+</allow>
+</filter>
+<filter name="only-blue" parents="deny-players deny-world deny-blocks">
+<allow>
+<team>blue</team>
+</allow>
+</filter>
+<filter name="no-tnt">
+<deny>
+<block>TNT</block>
+</deny>
+</filter>
+<filter name="anti-grief-red">
+<not>
+<all>
+<block>tnt</block>
+<team>red</team>
+</all>
+</not>
+</filter>
+<filter name="anti-grief-blue">
+<not>
+<all>
+<block>tnt</block>
+<team>blue</team>
+</all>
+</not>
+</filter>
+<filter name="allow-iron" parents="deny-all">
+<allow>
+<block>iron block</block>
+</allow>
+</filter>
+<filter name="no-void">
+<deny>
+<void/>
+</deny>
+</filter>
+</filters>
+<regions>
+<apply block-place="no-void" message="You may not edit the void area!">
+<negative>
+<rectangle max="27,46" min="-27,-46" name="middle"/>
+</negative>
+</apply>
+<!-- Base protection  -->
+<union name="bases">
+<rectangle max="16,-169" min="-16,-197" name="blue-base"/>
+<rectangle max="16,197" min="-16,169" name="red-base"/>
+</union>
+<apply block="allow-iron" message="You may only break iron blocks in the base!">
+<region name="bases"/>
+</apply>
+<!-- Blue team's portals protection  -->
+<union name="blue-portals">
+<rectangle max="49,-71" min="24,-83" name="green-portal"/>
+<rectangle max="-24,-71" min="-49,-63" name="yellow-portal"/>
+</union>
+<apply block="only-blue" use="only-blue">
+<region name="blue-portals"/>
+</apply>
+<!-- Red team's portals protection  -->
+<union name="red-portals">
+<rectangle max="49,83" min="24,71" name="pink-portal"/>
+<rectangle max="-24,83" min="-49,71" name="purple-portal"/>
+</union>
+<apply block="only-red" use="only-red">
+<region name="red-portals"/>
+</apply>
+<!--
+TNT Protection on the back of the map; BROKEN BECAUSE OF PGM BUG UNCOMMENT WHEN FIXED
+-->
+<!--
+         <apply block-place="anti-grief-red" message="You may not place TNT here!">
+            <rectangle max="oo,oo" min="-oo,58" name="back-red"/>
+        </apply>
+        <apply block-place="anti-grief-blue" message="You may not place TNT here!">
+            <rectangle max="oo,-58" min="-oo,-oo" name="back-blue"/>
+        </apply> 
+-->
+<!--
+blue wool room protection (these are the wools blue has to get) 
+-->
+<union name="blue-wool-rooms">
+<rectangle max="24,152" min="12,140" name="pink-room"/>
+<rectangle max="-12,152" min="-24,140" name="purple-room"/>
+</union>
+<apply block="only-blue" use="only-blue">
+<region name="blue-wool-rooms"/>
+</apply>
+<apply enter="only-blue" message="You may not enter your own wool room!">
+<region name="blue-wool-rooms"/>
+</apply>
+<!--
+red wool room protection (these are the wools red has to get) 
+-->
+<union name="red-wool-rooms">
+<rectangle max="24,-140" min="12,-152" name="yellow-room"/>
+<rectangle max="-12,-140" min="-24,-152" name="green-room"/>
+</union>
+<apply block="only-red" use="only-red">
+<region name="red-wool-rooms"/>
+</apply>
+<apply enter="only-red" message="You may not enter your own wool room!">
+<region name="red-wool-rooms"/>
+</apply>
+</regions>
+<portals>
+<!--  Portals in Blue Base  -->
+<portal x="@-39" y="@8" yaw="@-90" z="@-77">
+<cuboid max="-11,39,-181" min="-13,35,-185"/>
+</portal>
+<portal x="@39" y="@8" yaw="@90" z="@-77">
+<cuboid max="13,39,-181" min="11,35,-185"/>
+</portal>
+<!--  Portals in Red Base  -->
+<portal x="@-39" y="@8" yaw="@-90" z="@77">
+<cuboid max="-11,39,185" min="-13,35,181"/>
+</portal>
+<portal x="@39" y="@8" yaw="@90" z="@77">
+<cuboid max="13,39,185" min="11,35,181"/>
+</portal>
+<!--  Portals back to Blue Base  -->
+<portal filter="only-blue" x="@10" y="@35.5" yaw="@90" z="@-183">
+<cuboid max="44,12,-74" min="43,8,-80"/>
+</portal>
+<portal filter="only-blue" x="@-10" y="@35.5" yaw="@-90" z="@-183">
+<cuboid max="-43,12,-74" min="-44,8,-80"/>
+</portal>
+<!--  Portals back to Red Base  -->
+<portal filter="only-red" x="@10" y="@35.5" yaw="@90" z="@183">
+<cuboid max="44,12,80" min="43,8,-80"/>
+</portal>
+<portal filter="only-red" x="@-10" y="35.5" yaw="@-90" z="@183">
+<cuboid max="-43,12,80" min="-44,8,-80"/>
+</portal>
+</portals>
+<maxbuildheight>38</maxbuildheight>
+<wools>
+<wool color="yellow" team="red">
+<block location="6,36,194"/>
+</wool>
+<wool color="green" team="red">
+<block location="-7,36,194"/>
+</wool>
+<wool color="pink" team="blue">
+<block location="6,36,-195"/>
+</wool>
+<wool color="purple" team="blue">
+<block location="-7,36,-195"/>
+</wool>
+</wools>
+</map>
