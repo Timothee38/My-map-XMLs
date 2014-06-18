@@ -2,14 +2,14 @@
 <map proto="1.3.3">
 <name>Taj Mahal DTC</name>
 <version>1.0.0</version>
-<objective>Destroy the other teams' core.</objective>
+<objective>Destroy the other team's core.</objective>
 <authors>
     <author>Timothee38</author>
     <author>Avaleer</author>
 </authors>
 <contributors>
-    <contributor contribution="spawners.">_IQ</contributor>
-    <contributor contribution="spawners.">pepsidawg00</contributor>
+    <contributor contribution="Spawners">_IQ</contributor>
+    <contributor contribution="Spawners">pepsidawg00</contributor>
 </contributors>
 <kits>
     <kit name="main">
@@ -33,7 +33,7 @@
     </kit>
 </kits>
 <teams>
-   <team color="orange" max="32" max-overfill="40">Orange Team</team>
+   <team color="gold" max="32" max-overfill="40">Orange Team</team>
    <team color="lime" max="32" max-overfill="40">Lime Team</team>
 </teams>
 <spawns>
@@ -59,7 +59,6 @@
     <item>iron pickaxe</item>
     <item>iron axe</item>
     <item>bow</item>
-    <item>arrow</item>
     <item>step</item>
     <item>iron chestplate</item>
     <item>leather leggings</item>
@@ -88,6 +87,9 @@
     <item>iron block</item>
     <item>wood</item>
 </itemremove>
+<toolrepair>
+    <tool>arrow</tool>
+</toolrepair>
 <blockdrops>
     <rule>
         <block>redstone block</block>
@@ -113,33 +115,37 @@
 </blockdrops>
 <filters>
     <filter name="deny-some-breaks">
-          <block>mob spawner</block>
+        <not>
+            <block>mob spawner</block>
+        </not>
     </filter>      
 </filters>
 <regions>
-    <union name="renewables">
-        <cuboid min="6,5,27" max="8,8,25" />
-        <cuboid min="-5,5,25" max="-7,8,27" />
-        <cuboid min="-7,5,-42" max="-5,8,-40" />
-        <cuboid min="6,5,-42" max="8,8,-40" />
-    </union>
-    <cuboid name="lime-core" min="-3,18,36" max="4,30,42" />
-    <cuboid name="orange-core" min="-3,18,-49" max="4,30,-57" />
-    <apply block="deny-all">
-        <cuboid min="-1,0,38" max="2,16,42" />
-        <cuboid min="2,0,-53" max="-1,16,-57" />
-    </apply>
-    <apply block-break="deny-some-breaks">
+    <apply block="deny-some-breaks">
         <rectangle min="-oo,-oo" max="oo,oo"/>
+    </apply>
+    <union name="renewables">
+        <cuboid min="6,5,27" max="8,8,25"/>
+        <cuboid min="-5,5,25" max="-7,8,27"/>
+        <cuboid min="-7,5,-42" max="-5,8,-40"/>
+        <cuboid min="6,5,-42" max="8,8,-40"/>
+    </union>
+    <apply block="deny-world">
+        <cuboid min="-1,0,38" max="2,16,42"/>
+        <cuboid min="2,0,-53" max="-1,16,-57"/>
     </apply>
 </regions>
 <cores material="obsidian" leak="4">
-    <core team="lime"><region name="lime-core"/></core>
-    <core team="orange"><region name="orange-core"/></core>
+    <core team="lime">
+        <cuboid name="lime-core" min="-3,18,36" max="4,30,42"/>
+    </core>
+    <core team="orange">
+        <cuboid name="orange-core" min="-3,18,-49" max="4,30,-57"/>
+    </core>
 </cores>
 <renewables>
     <renewable rate="4" grow="true" particles="true" sound="true" avoid-entities="true">
-        <region name="renewables" />
+        <region name="renewables"/>
         <renew>redstone ore</renew>
         <replace>air</replace>
     </renewable>
