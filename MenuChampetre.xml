@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<map proto="1.3.3">
+ <name>Menu Champêtre</name>
+ <version>1.0.0</version>
+ <objective>Leak lava from the opposing team's core!</objective>
+ <authors>
+  <author>Timothee38</author>
+  <author>Dracoheart2</author>
+ </authors>
+ <contributors>
+  <contributor contribution="Map XML">_IQ</contributor>
+ </contributors>
+ <teams>
+  <team color="blue" max="16">Blue Team</team>
+  <team color="red" max="16">Red Team</team>
+ </teams>
+ <spawns>
+  <spawn team="blue" kit="blue" yaw="0">
+   <cylinder base="-1.5,46.3,-283.5" radius="2" height="0"/>
+  </spawn>
+  <spawn team="red" kit="red" yaw="180">
+   <cylinder base="-5.5,46.3,-35.5" radius="2" height="0"/>
+  </spawn>
+  <default yaw="90">
+   <block>-2.5,57,-159</block>
+  </default>
+ </spawns>
+ <kits>
+  <kit name="spawn">
+   <item slot="0">stone sword</item>
+   <item slot="1" enchantment="arrow infinite:1">bow</item>
+   <item slot="2" enchantment="durability:3">stone spade</item>
+   <item slot="3">stone axe</item>
+   <item slot="4">diamond pickaxe</item>
+   <item slot="5" amount="32">bread</item>
+   <item slot="6" amount="32" damage="2">wood</item>
+   <potion duration="5">heal</potion>
+   <potion duration="10">damage resistance</potion>
+  </kit>
+  <kit name="red" parents="spawn">
+   <helmet color="cd0000">leather helmet</helmet>
+   <chestplate color="cd0000">leather chestplate</chestplate>
+  </kit>
+  <kit name="blue" parents="spawn">
+   <helmet color="0066cc">leather helmet</helmet>
+   <chestplate color="0066cc">leather chestplate</chestplate>
+  </kit>
+ </kits>
+ <filters>
+  <filter name="no-void" parents="allow-all">
+   <deny>
+    <void/>
+   </deny>
+  </filter>
+  <filter name="no-beacons">
+   <not>
+    <block>beacon</block>
+   </not>
+  </filter>
+ </filters>
+ <regions>
+  <apply block="no-void" message="You may not edit outside of the main playing area!">
+   <negative>
+     <rectangle min="-39,-240" max="32,-170"/>
+     <rectangle min="32,-79" max="-39,-79"/>
+   </negative>
+  </apply>
+  <!-- Void Gap-->
+  <apply block="deny-all" message="You may not edit outside of the main playing area!">
+   <negative name="void-inverse">
+    <rectangle min="-39,-149" max="32,-170"/>
+   </negative>
+  </apply>
+ </regions>
+ <portals>
+  <portal x="-17.5" y="3.2" z="-88.5" yaw="-90">
+   <cuboid min="-2,46,-28" max="-9,50,-28"/>
+  </portal>
+  <portal x="10.5" y="3.2" z="-230.5" yaw="90">
+   <cuboid min="-4.3,46,-290" max="2,50,-291"/>
+  </portal>
+ </portals>
+ <maxbuildheight>20</maxbuildheight>
+ <cores material="obsidian" leak="5">
+  <cores team="blue">
+   <core name="West Core">
+    <cuboid min="-16,6,-195" max="-23,20,-202"/>
+   </core>
+   <core name="East Core">
+    <cuboid min="9,6,-201" max="16,20,-208"/>
+   </core>
+  </cores>
+  <cores team="red">
+   <core name="East Core">
+    <cuboid min="9,6,-117" max="16,20,-124"/>
+   </core>
+   <core name="West Core">
+    <cuboid min="-16,6,-118" max="-23,20,-111"/>
+   </core>
+  </cores>
+ </cores>
+ <toolrepair>
+  <tool>stone sword</tool>
+  <tool>diamond pickaxe</tool>
+  <tool>stone spade</tool>
+  <tool>stone axe</tool>
+  <tool>bow</tool>
+ </toolrepair>
+ <itemremove>
+  <item>bread</item>
+  <item>leather helmet</item>
+  <item>leather chestplate</item>
+  <item>obsidian</item>
+  <item>red mushroom</item>
+  <item>obsidian</item>
+  <item>beacon</item>
+  <item>flint</item>
+ </itemremove>
+</map>
