@@ -27,18 +27,18 @@
 </spawns>
 <filters>
     <filter name="deny-disp">
-	    <deny>
-		    <block>dispenser</block>
+        <deny>
+            <block>dispenser</block>
         </deny>
     </filter>
 </filters>
 <regions>
     <rectangle name="main" min="-oo,-oo" max="oo,oo" />
-	<apply block="deny-all">
-	    <region name="main"/>
+    <apply block="deny-all">
+        <region name="main"/>
     </apply>
     <apply use="deny-disp">
-	    <region name="main"/>
+        <region name="main"/>
     </apply>
 </regions>
 <timelock>on</timelock>
