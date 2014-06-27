@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<map proto="1.3.3">
+<name>BN: Weinachten</name>
+<version>1.0.0</version>
+<objective>Kill as many people as you can.</objective>
+<authors>
+    <author>Timothee38</author>
+    <author>Dracoheart2</author>
+    <author>auxdempster</author>
+</authors>
+<teams>
+    <team color="dark red" max="6" max-overfill="10">Red Team</team>
+    <team color="dark aqua" max="6" max-overfill="10">Blue Team</team>
+    <team color="green" max="6" max-overfill="10">Lime Team</team>
+    <team color="yellow" max="6" max-overfill="10">Yellow Team</team>
+</teams>
+<spawns>
+    <spawn team="blue" yaw="135">
+        <point>72,11,10</point>
+    </spawn>
+    <spawn team="red" yaw="45">
+        <point>72,11,-25</point>
+    </spawn>
+    <spawn team="yellow" yaw="-135">
+        <point>36,11,10</point>
+    </spawn>
+    <spawn team="lime" yaw="-45">
+        <point>36,11,-25</point>
+    </spawn>
+    <default yaw="180">
+        <cuboid min="55,65,-8" max="53,65,-6" />
+    </default>
+</spawns>
+<classes family="ghost" sticky="true">
+    <class name="Blasternaut" default="true" description="The default kit!" longdescription="The default kit!" icon="tnt" restrict="false" sticky="false">
+        <permission>grenades.use</permission>
+        <permission>doublejump.use</permission>
+        <kit name="spawn">
+            <item slot="0" name="`cTNT Launcher">bow</item>
+            <item slot="1" amount="4">tnt</item>
+            <item slot="2" name="`6`lGrenade" amount="32">fireball</item>
+            <item slot="8" damage="8229">potion</item>
+            <item slot="28" amount="6">arrow</item>
+            <boots enchantment="protection explosions:1">iron boots</boots>
+            <potion duration="8" amplifier="25">heal</potion>
+            <potion duration="8" amplifier="25">damage resistance</potion>
+            <potion duration="oo" amplifier="2">speed</potion>
+            <potion duration="oo" amplifier="1">jump</potion>
+        </kit>
+    </class>
+</classes>
+<score>
+    <time>180</time>
+    <limit>-1</limit>
+</score>
+<disabledamage>
+    <damage>fall</damage>
+</disabledamage>
+<modifybowprojectile>
+    <projectile>TNTPrimed</projectile>
+    <velocityMod>1.0</velocityMod>
+</modifybowprojectile>
+<tnt>
+    <instantignite>on</instantignite>
+    <blockdamage>off</blockdamage>
+    <yield>0</yield>
+</tnt>
+<itemremove>
+     <item>iron boots</item>
+</itemremove>
+<toolrepair>
+     <tool>bow</tool>
+</toolrepair>
+<killreward>
+    <item amount="1">arrow</item>
+</killreward>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<filters>
+    <filter name="only-TNT" parents="deny-all">
+        <allow><block>TNT</block></allow>
+    </filter>
+</filters>
+<regions>
+    <apply block="only-TNT">
+        <rectangle name="playable" min="-oo,-oo" max="oo,oo"/>
+    </apply>
+</regions>
+</map>
