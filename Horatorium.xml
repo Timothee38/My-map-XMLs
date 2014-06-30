@@ -20,7 +20,7 @@
         <item slot="1" enchantement="arrow infinite" damage="-3000">bow</item>
         <item slot="2" damage="-3000">diamond pickaxe</item>
         <item slot="3">golden carrot</item>
-        <item slot="4">log</item>
+        <item slot="4" amount="64">log</item>
         <item slot="17">arrow</item>
     </kit>
     <kit name="red" parents="spawn">
