@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<map proto="1.3.3">
+<name>Horatorium</name>
+<version>1.0.0</version>
+<objective>Destroy the ennemy's core.</objective>
+<authors>
+    <author>Timothee38</author>
+</authors>
+<contributors>
+    <contributor contribution="Given the name.">Cratain</contributor>
+    <contributor contribution="Feedback.">Tywnis</contributor>
+</contributors>
+<teams>
+   <team color="dark red" max="14" max-overfill="16">Red Team</team>
+   <team color="blue" max="14" max-overfill="16">Blue Team</team>
+</teams>
+<kits>
+    <kit name="spawn" force="true">
+        <item slot="0" damage="-3000">stone sword</item>
+        <item slot="1" enchantement="arrow infinite" damage="-3000">bow</item>
+        <item slot="2" damage="-3000">diamond pickaxe</item>
+        <item slot="3">golden carrot</item>
+        <item slot="4">log</item>
+        <item slot="17">arrow</item>
+    </kit>
+    <kit name="red" parents="spawn">
+        <helmet color="cd0000" damage="-3000">leather helmet</helmet>
+        <chestplate color="cd0000" damage="-3000">leather chestplate</chestplate>
+    </kit>
+    <kit name="blue" parents="spawn">
+        <helmet color="0066cc" damage="-3000">leather helmet</helmet>
+        <chestplate color="0066cc" damage="-3000">leather chestplate</chestplate>
+    </kit>
+</kits>
+<spawns>
+    <spawn team="red" kit="red" yaw="90">
+        <cuboid min="136,42,106" max="135,42,107"/>
+    </spawn>
+    <spawn team="blue" kit="blue" yaw="90">
+        <cuboid min="135,42,-29" max="136,42,-30"/>
+    </spawn>
+    <default yaw="90">
+        <cuboid min="72,64,39" max="74,64,37"/>
+    </default>
+</spawns>
+<regions>
+    <union name="red-portals">
+        <cuboid min="139,42,103" max="141,46,101" />
+        <cuboid min="139,42,110" max="141,46,112" />
+        <cuboid min="132,42,110" max="130,46,112" />
+        <cuboid min="132,42,103" max="130,46,101" />
+    </union>
+    <union name="blue-portals">
+        <cuboid min="132,42,-33" max="130,46,-35" />
+        <cuboid min="139,42,-33" max="141,46,-35" />
+        <cuboid min="139,42,-26" max="141,46,-24" />
+        <cuboid min="132,42,-26" max="130,46,-24" />
+    </union>
+</regions>
+<portals>
+    <portal x="@104" y="@5" z="@-13" yaw="@50">
+        <region name="blue-portals" />
+    </portal>
+    <portal x="@104" y="@5" z="@90" yaw="@130">
+        <region name="red-portals" />
+    </portal>
+</portals>
+<cores material="obsidian" leak="5">
+    <core team="blue">
+        <cuboid min="65,5,0" max="57,20,-7"/>
+    </core>
+    <core team="red">
+        <cuboid min="65,5,85" max="56,20,76"/>
+    </core>
+</cores>
+<timelock>on</timelock>
+</map>
