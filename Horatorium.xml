@@ -74,4 +74,16 @@
     </core>
 </cores>
 <timelock>on</timelock>
+<itemremove>
+    <item>bow</item>
+    <item>golden carrot</item>
+    <item>stone sword</item>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>log</item>
+</itemremove>
+<toolrepair>
+    <item>stone sword</item>
+    <item>bow</item>
+</toolrepair>
 </map>
