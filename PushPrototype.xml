@@ -38,14 +38,14 @@
     </kit>
 </kits>
 <spawns>
-    <spawn team="pushers" kit="pushers" yaw="">
-        <cuboid min="" max="" />
+    <spawn team="pushers" kit="pushers" yaw="180">
+        <cuboid min="-5,7,19" max="-4,7,18" />
     </spawn>
-    <spawn team="pushed" kit="pushed" yaw="">
-        <cuboid min="" max="" />
+    <spawn team="pushed" kit="pushed" yaw="0">
+        <cuboid min="-5,7,7" max="-4,7,8" />
     </spawn>
-    <default yaw="">
-        <cuboid min="" max="" />
+    <default yaw="180">
+        <cuboid min="-5,17,33" max="-4,17,32" />
     </default>
 </spawns>
 <filters>
