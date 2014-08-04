@@ -31,10 +31,10 @@
         <boots color="993333" damage="-3000">leather boots</boots>
     </kit>
     <kit name="makes-them-invicible">
-        <!--TODO-->
+        <potion duration="oo" amplifier="127">damage resistance</potion>
     </kit>
     <kit name="kills-them">
-        <!--TODO-->
+        <potion duration="oo" amplifier="127">harm</potion>
     </kit>
 </kits>
 <spawns>
@@ -55,17 +55,19 @@
 </filters>
 <regions>
     <apply enter="only-pushed">
-        <rectangle name="pit" min="-11,-11" max="1,1" />
+        <rectangle name="pit" min="-11,-11" max="1,1"/>
     </apply>
     <apply block="deny-all">
-        <rectangle name="deny-all" min="-oo,-oo" max="oo,oo" />
+        <rectangle name="deny-all" min="-oo,-oo" max="oo,oo"/>
     </apply>
-    <cuboid name="arena" min="5,6,0" max="-14,16,21" /><!--Where they push each other, so they need to be invincible--> 
+    <cuboid name="arena" min="5,6,0" max="-14,16,21"/><!--Where they push each other, so they need to be invincible--> 
     <apply kit="makes-them-invicible">
-        <region name="arena" />
+        <region name="arena"/>
     </apply>
     <apply kit="kills-them">
-        <negative><region name="arena" /></negative>
+        <negative>
+            <region name="arena"/>
+         </negative>
     </apply>
 </regions>
 <hunger>
