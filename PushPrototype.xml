@@ -18,17 +18,17 @@
 </teams>
 <kits>
     <kit name="pushers">
-        <helmet color="" damage="-3000">leather helmet</helmet>
-        <chestplate color="" damage="-3000">leather chestplate</chestplate>
-        <leggings color="" damage="-3000">leather leggings</leggings>
-        <boots color="" damage="-3000">leather boots</boots>
+        <helmet color="334CB2" damage="-3000">leather helmet</helmet>
+        <chestplate color="334CB2" damage="-3000">leather chestplate</chestplate>
+        <leggings color="334CB2" damage="-3000">leather leggings</leggings>
+        <boots color="334CB2" damage="-3000">leather boots</boots>
     </kit>
     <kit name="pushed">
         <item enchantement="knockback:2" name="`4Repel Stick">stick</item>
-        <helmet color="" damage="-3000">leather helmet</helmet>
-        <chestplate color="" damage="-3000">leather chestplate</chestplate>
-        <leggings color="" damage="-3000">leather leggings</leggings>
-        <boots color="" damage="-3000">leather boots</boots>
+        <helmet color="993333" damage="-3000">leather helmet</helmet>
+        <chestplate color="993333" damage="-3000">leather chestplate</chestplate>
+        <leggings color="993333" damage="-3000">leather leggings</leggings>
+        <boots color="993333" damage="-3000">leather boots</boots>
     </kit>
     <kit name="makes-them-invicible">
         <!--TODO-->
@@ -68,34 +68,10 @@
         <negative><region name="arena" /></negative>
     </apply>
 </regions>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
 <killreward>
-    <filter>
-        <kill-streak count="1"/>
-    </filter>
-    <item damage="1" enchantement="knockback:1">wood sword</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="2"/>
-    </filter>
-    <item damage="1" enchantement="knockback:1">wood sword</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="3"/>
-    </filter>
-    <item damage="1" enchantement="knockback:1">wood sword</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="4"/>
-    </filter>
-    <item damage="1" enchantement="knockback:1">wood sword</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="5"/>
-    </filter>
     <item damage="1" enchantement="knockback:1">wood sword</item>
 </killreward>
 </map>
