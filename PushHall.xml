@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<map proto="1.3.3">
+<name>Push: Hall</name>
+<version>1.0.0</version>
+<objective>Try not to get pushed in the pit, or try to push the other team in the pit.</objective>
+<authors>
+    <author>Timothee38</author>
+</authors>
+<blitz>
+    <time>1m</time>
+    <lives>1</lives>
+    <title>Push!</title>
+</blitz>
+<include src="blitz-global.xml"/>
+<teams>
+   <team color="blue" max="4" max-overfill="7">Pushers</team>
+   <team color="dark red" max="5" max-overfill="7">Pushed</team>
+</teams>
+<kits>
+    <kit name="pushers">
+        <helmet color="334CB2" locked="true" damage="-3000">leather helmet</helmet>
+        <chestplate color="334CB2" locked="true" enchantment="protection environmental:20" damage="-3000">leather chestplate</chestplate>
+        <leggings color="334CB2" locked="true" damage="-3000">leather leggings</leggings>
+        <boots color="334CB2" locked="true" damage="-3000">leather boots</boots>
+    </kit>
+    <kit name="pushed">
+        <item slot="0" enchantment="knockback:1">stick</item>
+        <helmet color="993333" locked="true" damage="-3000">leather helmet</helmet>
+        <chestplate color="993333" locked="true" enchantment="protection environmental:20" damage="-3000">leather chestplate</chestplate>
+        <leggings color="993333" locked="true" damage="-3000">leather leggings</leggings>
+        <boots color="993333" locked="true" damage="-3000">leather boots</boots>
+    </kit>
+    <kit name="kills-them" force="true">
+        <chestplate>iron chestplate</chestplate>
+    </kit>
+</kits>
+<spawns>
+    <spawn team="pushers" kit="pushers" yaw="180">
+        <cuboid min="-49,7,16" max="-51,7,18" />
+    </spawn>
+    <spawn team="pushed" kit="pushed" yaw="0">
+        <cuboid min="-49,7,2" max="-51,7,4" />
+    </spawn>
+    <default yaw="0">
+        <cuboid min="-49,15,31" max="-51,15,33" />
+    </default>
+</spawns>
+<filters>
+    <filter name="only-pushed"><!--Only pushed may fall in the pit-->
+        <team>pushed</team>
+    </filter>
+        <filter name="only-pushers">
+            <team>pushers</team>
+        </filter>
+</filters>
+<regions>
+    <apply enter="only-pushed">
+        <rectangle name="pit" min="-56,-1" max="-44,-11"/>
+    </apply>
+        <apply enter="only-pushers" message="You may not leave the red zone!">
+            <rectangle min="-56,0" max="-45,7"/>
+        </apply>
+    <apply block="deny-all">
+        <rectangle name="deny-all" min="-oo,-oo" max="oo,oo"/>
+    </apply>
+    <cuboid name="arena" min="-44,5,20" max="-56,15,0"/><!--Where they push each other, so they need to be invincible-->
+    <apply kit="kills-them">
+        <negative>
+            <region name="arena"/>
+         </negative>
+    </apply>
+</regions>
+<toolrepair>
+    <tool>leather helmet</tool>
+    <tool>leather leggings</tool>
+    <tool>leather chestplate</tool>
+    <tool>leather boots</tool>
+    <tool>wood sword</tool>
+</toolrepair>
+<hunger>
+    <depletion>off</depletion>
+</hunger>
+<killreward>
+    <item damage="2" enchantment="knockback:1">wood sword</item>
+</killreward>
+</map>
