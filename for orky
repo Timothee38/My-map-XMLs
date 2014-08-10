@@ -1,0 +1,27 @@
+-Killstreaks (gear 3.0 stuff) can be found at: -32 11 7
+-95:15 (black stained glass) wall falls down after 1 minutes (display a few messages to announce that the wall is going
+to be removed.
+- Iron blocks blockdrop a full set of iron armor
+- <blockdrops>
+    <rule>
+        <block>redstone block</block>
+            <drops>
+                <item amount="64">TNT</item>
+                <item>water bucket</item>
+                <item amount="64">redstone</item>
+                <item amount="16">stone button</item>
+                <item amount="10">diode</item>
+            </drops>
+        <wrongtool>true</wrongtool>
+    </rule>
+    <rule>
+        <block>iron block</block>
+            <drops>
+                <item>iron helmet</item>
+                <item>chainmail leggings</item>
+                <item>iron boots</item>
+                <item amount="5">iron ingot</item>
+            </drops>
+        <wrongtool>true</wrongtool>
+    </rule>
+</blockdrops>
