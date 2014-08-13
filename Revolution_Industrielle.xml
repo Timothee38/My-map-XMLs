@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<map>
+<name>RÃ©volution Industrielle</name>
+<version>1.0.0</version>
+<objective>Leak the enemy team's core</objective>
+<authors>
+    <author>Timothee38</author>
+    <author>Captain_Elliott</author>
+</authors>
+<contributors>
+    <contributor contribution="Feedback">ElectroidFilms</contributor>
+    <contributor contribution="XML">orky48</contributor>
+</contributors>
+<rules>
+    <rule>Blowing up the structure around the core won't be considered as teamgrief as long as you don't damage other's cannons.</rule>
+</rules>
+<teams>
+    <team color="dark red" max="50">Red Team</team>
+    <team color="yellow" max="50">Yellow Team</team>
+</teams>
+<kits>
+    <kit name="spawn">
+        <item slot="0">iron sword</item>
+        <item slot="1" enchantment="infinity:1">bow</item>
+        <item slot="2" enchantment="durability:3">iron spade</item>
+        <item slot="3">diamond pickaxe</item>
+        <item slot="4" amount="32">bread</item>
+        <item slot="5" amount="32">log 2</item>
+        <item slot="28">arrow</item>
+        <potion duration="5">heal</potion>
+        <potion duration="10">damage resistance</potion>
+    </kit>
+    <kit name="red" parents="spawn">
+        <helmet color="cd0000">leather helmet</helmet>
+        <chestplate color="cd0000">leather chestplate</chestplate>
+    </kit>
+    <kit name="yellow" parents="spawn">
+        <helmet color="E5E533">leather helmet</helmet>
+        <chestplate color="E5E533">leather chestplate</chestplate>
+    </kit>
+</kits>
+<spawns>
+    <spawn team="red" yaw="0" kit="red">
+        <cuboid min="16,58,-297" max="19,58,-295"/>
+    </spawn>
+    <spawn team="yellow" yaw="180" kit="yellow">
+        <cuboid min="16,58,82" max="19,58,64"/>
+    </spawn>
+    <default yaw="90">
+        <point>83,55,-107</point>
+    </default>
+</spawns>
+<filters>
+    <filter name="redstone-only">
+        <block>redstone block</block>
+    </filter>
+</filters>
+<regions>
+    <apply block="deny-all" message="You may not build outside of the map!">
+        <negative>
+            <rectangle min="-20,-271" max="55,58"/>
+        </negative>
+    </apply>
+    <apply block="redstone-only" message="You may only break redstone blocks here">
+        <union name="redstone-renew">
+            <!-- Yellow Team -->
+            <cuboid min="27,15,34" max="37,16,44"/>
+            <cuboid min="-2,15,34" max="8,16,44"/>
+            <!-- Red Team -->
+            <cuboid min="27,15,-257" max="37,16,-247"/>
+            <cuboid min="-2,15,-257" max="8,16,-247"/>
+        </union>
+    </apply>
+</regions>
+<blockdrops>
+    <rule>
+        <filter>
+            <block>redstone block</block>
+        </filter>
+        <drops>
+            <item>water bucket</item>
+            <item amount="64">redstone</item>
+            <item amount="16">stone button</item>
+            <item amount="10">diode</item>
+        </drops>
+        <wrongtool>true</wrongtool>
+    </rule>
+    <rule>
+        <filter>
+            <block>iron block</block>
+        </filter>
+        <drops>
+            <item>iron helmet</item>
+            <item>chainmail leggings</item>
+            <item>iron boots</item>
+            <item amount="5">iron ingot</item>
+        </drops>
+        <wrongtool>true</wrongtool>
+    </rule>
+</blockdrops>
+<renewables>
+    <renewable rate="2" grow="true" particles="true" sound="true" avoid-entities="true">
+        <region>
+            <region name="redstone-renew"/>
+        </region>
+        <renew>redstone block</renew>
+        <replace>air</replace>
+    </renewable>
+        <renewable rate="2" grow="true" particles="true" sound="true" avoid-entities="true">
+        <region>
+            <rectangle min="34,-220" max="2,-232"/>
+            <rectangle min="1,7" max="34,19"/>
+        </region>
+        <renew>iron block</renew>
+        <replace>air</replace>
+    </renewable>
+</renewables>
+<modes>
+    <mode after="2m" material="obsidian" name="`eOBSIDIAN MODE"/>
+    <mode after="15m" material="gold block" name="`eGOLD MODE"/>
+    <mode after="20m" mateiral="glass" name="`eGLASS MODE"/>
+</modes>
+<cores mode-changes="true" material="bedrock">
+    <core team="red">
+        <cuboid min="15,15,-156" max="20,19,-151"/>
+    </core>
+    <core team="yellow">
+        <cuboid min="15,15,-62" max="20,19,-57"/>
+    </core>
+</cores>
+<killreward>
+    <item name="`6Golden Snack" amount="2">golden apple</item>
+</killreward>
+<killreward>
+    <filter>
+        <kill-streak count="2"/>
+    </filter>
+    <item amount="256">tnt</item>
+</killreward>
+<killreward>
+    <filter>
+        <kill-streak count="3"/>
+    </filter>
+    <item enchantment="efficiency:1;durability:3">diamond axe</item>
+</killreward>
+<killreward>
+    <filter>
+        <kill-streak count="4"/>
+    </filter>
+    <item amount="3">diamond block</item>
+</killreward>
+<killreward>
+    <filter>
+        <kill-streak count="5"/>
+    </filter>
+    <item damage="8193">potion</item>
+</killreward>
+<killreward>
+    <filter>
+        <kill-streak count="6"/>
+    </filter>
+    <item>enchantment table</item>
+</killreward>
+<killreward>
+    <filter>
+        <kill-streak count="7"/>
+    </filter>
+    <item enchantment="protection:1" damage="-3000">diamond chestplate</item>
+</killreward>
+<killreward>
+    <filter>
+        <kill-streak count="10"/>
+    </filter>
+    <item amount="128">tnt</item>
+</killreward>
+<killreward>
+    <filter>
+        <kill-streak count="12"/>
+    </filter>
+    <item amount="5">exp bottle</item>
+</killreward>
+<killreward>
+    <filter>
+        <kill-streak count="20"/>
+    </filter>
+    <item amount="128">tnt</item>
+</killreward>
+<killreward>
+    <filter>
+        <kill-streak count="40"/>
+    </filter>
+    <item amount="30">bookshelf</item>
+</killreward>
+
+<itemremove>
+    <item>redstone block</item>
+    <item>iron block</item>
+    <item>glass bottle</item>
+    <item>leather chestplate</item>
+    <item>leather helmet</item>
+    <item>bread</item>
+    <item>log 2</item>
+    <item>obsidian</item>
+    <item>gold block</item>
+    <item>stained clay</item>
+    <item>trap door</item>
+    <item>quartz block</item>
+    <item>arrow</item>
+</itemremove>
+<toolrepair>
+    <tool>iron spade</tool>
+    <tool>iron sword</tool>
+    <tool>diamond axe</tool>
+    <tool>bow</tool>
+    <tool>diamond pickaxe</tool>
+</toolrepair>
+<maxbuildheight>30</maxbuildheight>
+</map>
