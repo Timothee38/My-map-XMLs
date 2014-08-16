@@ -231,14 +231,19 @@
     <filter>
         <kill-streak count="2"/>
     </filter>
-    <item>iron leggings</item>
-    <item>iron boots</item>
+    <kit>
+        <leggings>iron leggings</leggings>
+        <boots>iron boots</boots>
+    </kit>
 </killreward>
 <killreward>
     <filter>
         <kill-streak count="4"/>
     </filter>
-    <item>iron chestplate</item>
-    <item>iron helmet</item>
+    <kit>
+        <item>iron chestplate</item>
+        <item>iron helmet</item> 
+    </kit>
 </killreward>
+
 </map>
