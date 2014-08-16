@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+<map proto="1.3.3">
+<name>Holzfäller</name> 
+<version>1.0.0</version> 
+<objective>Capture the wools.</objective>
+
+<authors>
+    <author>Timothee38</author>
+</authors>
+
+<teams>
+    <team color="dark red" max="30" max-overfill="40">Red Team</team>
+    <team color="green" max="30" max-overfill="40">Green Team</team>
+    <team color="yellow" max="30" max-overfill="40">Yellow Team</team>
+</teams>
+<kits>
+    <kit name="spawn">
+        <item slot="0">iron sword</item>
+        <item slot="1" enchantment="arrow infinite:1">bow</item>
+        <item slot="28">arrow</item>
+        <item slot="2" enchantment="durability:3;dig speed:1">iron pickaxe</item>
+        <item slot="3" enchantment="durability:3;dig speed:1">diamond axe</item>
+        <item slot="4" amount="64">log 2</item>
+        <item slot="5" amount="32">glass</item>
+        <item slot="6" amount="2">golden apple</item>
+        <item slot="7" amount="64">golden carrot</item>
+    </kit>
+    <kit name="red" parents="spawn">
+        <chestplate color="cd0000">leather chestplate</chestplate>
+        <leggings>chainmail leggings</leggings>
+        <boots>chainmail boots</boots>
+    </kit>
+    <kit name="green" parents="spawn">
+        <chestplate color="667F33">leather chestplate</chestplate>
+        <leggings>chainmail leggings</leggings>
+        <boots>chainmail boots</boots>
+    </kit>
+    <kit name="yellow" parents="spawn">
+        <chestplate color="e5e533">leather chestplate</chestplate>
+        <leggings>chainmail leggings</leggings>
+        <boots>chainmail boots</boots>
+    </kit>
+</kits>
+<spawns>
+    <spawns kit="red" team="red">
+        <spawn yaw="-90">
+            <point>-5,7,-155</point>
+        </spawn>
+        <spawn yaw="90">
+            <point>6,7,-155</point> 
+        </spawn>
+        <spawn yaw="90">
+            <point>6,9,-41</point> 
+        </spawn>
+        <spawn yaw="-90">
+            <point>-5,7,-41</point> 
+        </spawn>
+    </spawns>
+    <spawns kit="green" team="green">
+        <spawn yaw="-90">
+            <point>-169,7,-41</point>
+        </spawn>
+        <spawn yaw="90">
+            <point>-157,7,-41</point>
+        </spawn>
+        <spawn yaw="90">
+            <point>-157,7,-155</point>
+        </spawn>
+        <spawn yaw="-90">
+            <point>-169,7,-155</point>
+        </spawn>
+    </spawns>
+    <spawns kit="yellow" team="yellow">
+        <spawn yaw="0">
+            <point>-24,7,-22</point>
+        </spawn>
+        <spawn yaw="-180">
+            <point>-24,7,-10</point>
+        </spawn>
+        <spawn yaw="-180">
+            <point>-138,7,-174</point>
+        </spawn>
+        <spawn yaw="0">
+            <point>-138,7,-186</point>
+        </spawn>
+    </spawns>
+    <default yaw="-90">
+        <point>-81,79,-98</point>
+    </default>
+</spawns>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>bow</tool>
+    <tool>iron pickaxe</tool>
+    <tool>iron axe</tool>
+    <tool>arrow</tool>
+</toolrepair>
+<itemremove>
+    <item>log 2</item>
+    <item>wood</item>
+    <item>golden carrot</item>
+    <item>iron sword</item>
+    <item>glass</item>
+    <item>piston</item>
+    <item>sapling</item>
+    <item>apple</item>
+    <item>chainmail boots</item>
+    <item>chainmail leggings</item>
+    <item>leather chestplate</item>
+</itemremove>
+
+<filters>
+    <filter name="only-red-and-green"><!--yellow wool rooms-->
+        <team>red</team>
+        <team>green</team>
+    </filter>
+    <filter name="only-red-and-yellow"><!--green wool room-->
+        <team>red</team>
+        <team>yellow</team>
+    </filter>
+    <filter name="only-yellow-and-green"><!--red wool room-->
+        <team>yellow</team>
+        <team>green</team>
+    </filter>
+    <filter name="no-void" parents="allow-all">
+        <deny><void/></deny>
+    </filter>
+    <filters>
+    <filter name="no-chest-breaking">
+        <not><block>chest</block></not>
+    </filter>
+</filters>
+</filters>
+
+<regions>
+    <rectangle name="red-wool-room" min="53;-85" max="65,-111" />
+    <rectangle name="green-wool-room" min="-228,-85" max="-216,-111" />
+    <rectangle name="yellow-wool-room" min="-94,36" max="-68,48" />
+    <rectangle name="orange-wool-room" min="-68,-233" max="-94,-245" />
+    
+    <union name="red-protection">
+        <rectangle name="r-spawn1" min="-10,-160" max="12,-114"/>
+        <rectangle name="r-spawn2" min="12,-82" max="-10,-36"/>
+        <rectangle name="green-mon" min="2,-101" max="-1,-95"/>
+    </union>
+    
+    <union name="green-protection">
+        <rectangle name="g-spawn1" min="-152,-114" max="-174,-160"/>
+        <rectangle name="g-spawn2" min="-174,-82" max="-152,-36"/>
+        <rectangle name="red-mon" min="-165,-95" max="-161,-101"/>
+    </union>
+    
+    <union name="yellow-protection">
+        <rectangle name="y-spawn1" min="-19,-27" max="-65,-4"/>
+        <rectangle name="y-spawn2" min="-97,-191" max="-143,-169"/>
+    </union>
+    
+    <union name="wool-rooms">
+        <region name="red-wool-room" />
+        <region name="green-wool-room" />
+        <region name="yellow-wool-room" />
+        <region name="orange-wool-room" />
+    </union>
+    
+    <union name="lanes">
+        <rectangle name="yellow-lane" min="-96,10" max="-68,48" />
+        <rectangle name="orange-lane" min="-95,-207" max="-68,-245" />
+        <rectangle name="green-lane" min="-190,-112" max="-228,-85" />
+        <rectangle name="red-lane" min="27,-84" max="65,-111" />
+    </union>
+    
+    <apply block="no-chest-breaking">
+        <region name="wool-rooms"/>
+    </apply>
+    
+    <apply block="no-void" message="You may not edit the void area">
+        <region name="lanes"/>
+    </apply>
+    
+    <apply block="deny-all" message="You may not break or place blocks in this region.">
+        <region name="yellow-protection"/>
+        <region name="red-protection"/>
+        <region name="green-protection"/>
+    </apply>
+    
+    <apply enter="only-yellow-and-green">
+        <region name="red-wool-room"/>
+    </apply>
+    <apply enter="only-red-and-green">
+        <region name="yellow-wool-room"/>
+        <region name="orange-wool-room"/>
+    </apply>
+    <apply enter="only-red-and-yellow">
+        <region name="green-wool-room"/>
+    </apply>
+</regions>
+
+<wools team="red">
+    <wool color="green">
+        <block>0,6,-98</block>
+    </wool>
+    <wool color="yellow">
+        <block>0,8,-38</block>
+    </wool>
+    <wool color="orange">
+        <block>0,8,-158</block>
+    </wool>
+</wools>
+<wools team="green">
+    <wool color="yellow">
+        <block>-163,8,-38</block>
+    </wool>
+    <wool color="red">
+        <block>-163,6,-98</block>
+    </wool>
+    <wool color="orange">
+        <block>-163,8,-158</block>
+    </wool>
+</wools>
+<wools team="yellow">
+    <wool color="green">
+        <block>-21,8,16</block>
+    </wool>
+    <wool color="red">
+        <block>-141,8,-180</block>
+    </wool>
+</wools>
+
+
+<killreward>
+    <filter>
+        <kill-streak count="2"/>
+    </filter>
+    <item>iron leggings</item>
+    <item>iron boots</item>
+</killreward>
+<killreward>
+    <filter>
+        <kill-streak count="4"/>
+    </filter>
+    <item>iron chestplate</item>
+    <item>iron helmet</item>
+</killreward>
+</map>
