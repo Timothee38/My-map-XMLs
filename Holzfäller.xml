@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <map proto="1.3.3">
-<name>Holzfäller</name> 
+<name>HolzfÃ¤ller</name> 
 <version>1.0.0</version> 
 <objective>Capture the wools.</objective>
 
@@ -245,5 +245,7 @@
         <helmet>iron helmet</helmet> 
     </kit>
 </killreward>
+
+<timelock>on</timelock>
 
 </map>
