@@ -241,8 +241,8 @@
         <kill-streak count="4"/>
     </filter>
     <kit>
-        <item>iron chestplate</item>
-        <item>iron helmet</item> 
+        <chestplate>iron chestplate</chestplate>
+        <helmet>iron helmet</helmet> 
     </kit>
 </killreward>
 
