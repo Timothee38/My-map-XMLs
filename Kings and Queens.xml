@@ -1,41 +1,173 @@
-<div class="page-header"><h1>Kings And Queens <small>v1.0.1</small></h1></div>
-<div>
-    <br><img src="http://i.imgur.com/DMWLO8w.png" class="img-polaroid"><br><br><br><br>
-    <div class="page-header">
-        <h1>Map Features</h1>
-    </div>
-    <table class="table table-striped">
-        <tbody>
-            <tr><td>✴ 2 teams TDM -g.</td></tr>
-            <tr><td>✴ 60v60</td></tr>
-            <tr><td>✴ Blue vs Red.</td></tr>
-            <tr><td>✴ One OP boss on each side.</td></tr>
-            <tr><td>✴ Old gear system (emerald trade) as this map was made before the Killstreaks and I wanted to keep it as in v1.0.0.</td></tr>
-            <tr><td>✴ Spawnkit: leather chestplate, stone sword, and 1 emerald.</td></tr>
-            <tr><td>✴ Get 2 emeralds on killreward.</td></tr>
-            <tr><td>✴ Exploding portals (like on Rift).</td></tr>
-        </tbody>
-    </table>
-    <div class="page-header">
-        <h1>Map Authors and Contributors</h1>
-    </div>
-    <table class="table table-striped">
-        <tbody>
-            <tr><td>✴ Timothee38 - Author</td></tr>
-            <tr><td>✴ _IQ - Author</td></tr>
-            <tr><td>✴ Aceman1998 - Author</td></tr>
-            <tr><td>✴ salalu - Contributor</td></tr>
-            <tr><td>✴ nixter1029 - Contributor</td></tr>
-        </tbody>
-    </table>
-    <br>
-    <br><div class="page-header"><h1>Downloads &amp; Links <small>Latest public version - 1.0.0</small>
-        </h1></div>
-    <a href="http://www.mediafire.com/download/9wqzv5xu650q5iv/Kings_And_Queens.zip" title="v1.0.0" class="btn btn-large btn-block"><strong>Packaged Download</strong> <small>v1.0.1</small></a>
-    <a href="" title="View on GitHub!" class="btn btn-large btn-block"><strong>XML</strong> <small>View on GitHub!</small></a>
-    <a href="" title="View on imgur!" class="btn btn-large btn-block"><strong>Images</strong> <small>View on imgur!</small></a>
-    <br><br>
-    <div class="alert alert-success">
-        <h4 class="text-center">Feedback is welcome!<small> (Thanks lymibom for the HTML)</small></h4>
-    </div>
-</div>
+<?xml version="1.0"?>
+<map proto="1.3.3">
+<name>Kings and Queens</name>
+<version>1.0.1</version> <!-- The map version -->
+<objective>Be the team with the least deaths after the time limit is reached</objective>
+<rules>
+    <rule>You may not shoot directly into spawn.</rule>
+</rules>
+<!-- Major map authors. -->
+<authors>
+    <author contribution="Idea, main landscape, XML.">Timothee38</author>
+    <author contribution="Building, spawner/villagers editing.">_IQ</author>
+    <author contribution="Gameplay ideas.">Aceman1998</author>
+</authors>
+<!-- People that contributed in some way to the map. -->
+<contributors>
+    <contributor contribution="Feedback.">salalu</contributor>
+    <contributor contribution="Help Fixing the map.">nixter1029</contributor>
+</contributors>
+<teams>
+<team color="blue" max="60" max-overfill="75">Blue Team</team>
+<team color="dark red" max="60" max-overfill="75">Red Team</team>
+</teams>
+<kits>
+    <kit name="heal">
+        <potion duration="8" amplifier="5">heal</potion>
+        <potion duration="8" amplifier="4">damage resistance</potion>
+    </kit>
+    <kit name="spawn" parents="heal">
+        <item slot="0" damage="-3000">stone sword</item>
+        <item slot="1" amount="24">grilled pork</item>
+        <item slot="2" amount="1">Emerald</item>
+    </kit>
+    <kit name="blue" parents="spawn">
+        <chestplate color="334CB2" damage="-32000">leather chestplate</chestplate>
+    </kit>
+    <kit name="red" parents="spawn">
+        <chestplate color="993333" damage="-32000">leather chestplate</chestplate>
+    </kit>
+</kits>
+<mobs>
+    <filter>
+        <spawn>spawner</spawn>
+    </filter>
+</mobs>
+<timelock>on</timelock>
+<difficulty>3</difficulty>
+<killreward>
+    <item amount="2">emerald</item>
+</killreward>
+<multitrade/>
+<itemremove>
+    <item>leather chestplate</item>
+    <item>grilled pork</item>
+    <item>diamond chestplate</item>
+    <item>iron chestplate</item>
+    <item>stone sword</item>
+    <item>diamond sword</item>
+    <item>iron axe</item>
+    <item>iron sword</item>
+    <item enchantment="DAMAGE ALL: 2">iron sword</item>
+    <item>bow</item>
+    <item>diamond leggings</item>
+    <item>bone</item>
+    <item>rotten flesh</item>
+    <item>glass bottle</item>
+    <item>iron ingot</item>
+    <item>iron spade</item>
+    <item>arrow</item>
+</itemremove>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>iron sword</tool>
+    <tool>iron axe</tool>
+    <tool>bow</tool>
+</toolrepair>
+<tnt>
+    <instantignite>on</instantignite>
+    <blockdamage>on</blockdamage>
+    <yield>0</yield>
+</tnt>
+<!--filters-->
+<filters>
+    <filter name="breakable-blocks" parents="deny-blocks">
+        <allow>
+            <block>iron ore</block>
+            <block>wood</block>
+            <block>log</block>
+            <block>stone</block>
+            <block>cobblestone</block>
+            <block>wood_step</block>
+        </allow>
+    </filter>
+    <filter name="only-red" parents="deny-blocks">
+        <team>red</team>
+    </filter>
+    
+    <filter name="only-blue" parents="deny-blocks">
+        <team>blue</team>
+    </filter>
+</filters>
+<spawns>
+    <spawn team="red" kit="red" yaw="-90">
+        <cuboid min="263,7,43" max="266,7,46"/>
+    </spawn>
+    <spawn team="blue" kit="blue" yaw="90">
+        <cuboid min="238,7,268" max="235,7,265"/>
+    </spawn>
+    <default yaw="90">
+        <cuboid min="330,71,157" max="327,71,154"/>
+    </default>
+</spawns>
+<!--regions-->
+<regions>
+    <rectangle name="all" min="-oo,-oo" max="oo,oo"/>
+    <cuboid name="red-teleport-1" min="279,10,97" max="281,14,95"/>
+    <cuboid name="red-teleport-2" min="193,10,80" max="191,14,82"/>
+    <cuboid name="red-teleport-3" min="238,10,126" max="240,14,128"/>
+    <rectangle name="red-spawn" min="287,52" max="250,32"/><!--only red-->
+    <rectangle name="red-baron" min="220,54" max="206,68"/><!--only red-->
+    <cuboid name="blue-teleport-1" min="219,10,215" max="217,14,213"/>
+    <cuboid name="blue-teleport-2" min="305,10,228" max="307,14,230"/>
+    <cuboid name="blue-teleport-3" min="260,10,184" max="258,14,182"/>
+    <rectangle name="blue-spawn" min="178,257" max="252,279"/><!--only blue-->
+    <rectangle name="blue-baron" min="279,257" max="293,243"/><!--only blue-->
+    <union name="red-portals">
+        <region name="red-teleport-1"/>
+        <region name="red-teleport-2"/>
+        <region name="red-teleport-3"/>
+    </union>
+    <union name="blue-portals">
+        <region name="blue-teleport-1"/>
+        <region name="blue-teleport-2"/>
+        <region name="blue-teleport-3"/>
+    </union>
+    <union name="only-red-stuff">
+        <region name="red-spawn"/>
+        <region name="red-baron"/>
+    </union>
+    <union name="only-blue-stuff">
+        <region name="blue-spawn"/>
+        <region name="blue-baron"/>
+    </union>
+    <apply kit="heal">
+        <region name="red-portals"/>
+        <region name="red-spawn"/>
+        <region name="blue-portals"/>
+        <region name="blue-spawn"/>
+    </apply>
+    <apply enter="only-red" message="You may not enter red team's territory.">
+        <region name="only-red-stuff"/>
+        <region name="red-portals"/>
+    </apply>
+    <apply block="breakable-blocks">
+        <region name="all"/>
+    </apply>
+    <apply enter="only-blue" message="You may not enter blue team's territory.">
+        <region name="only-blue-stuff"/>
+        <region name="blue-portals"/>
+    </apply>
+</regions>
+<portals>
+    <portal x="@263" y="@7" z="@43" yaw="@-90" filter="only-red">
+        <region name="red-portals"/>
+    </portal>
+    <portal x="@238" y="@7" z="@268" yaw="@90" filter="only-blue">
+        <region name="blue-portals"/>
+    </portal>
+</portals>
+<score>
+    <time>20m</time>
+</score>
+</map>
