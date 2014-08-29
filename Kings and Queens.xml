@@ -1,25 +1,23 @@
 <?xml version="1.0"?>
 <map proto="1.3.3">
 <name>Kings and Queens</name>
-<version>1.0.1</version> <!-- The map version -->
+<version>1.0.1</version>
 <objective>Be the team with the least deaths after the time limit is reached</objective>
 <rules>
     <rule>You may not shoot directly into spawn.</rule>
 </rules>
-<!-- Major map authors. -->
 <authors>
     <author contribution="Idea, main landscape, XML.">Timothee38</author>
     <author contribution="Building, spawner/villagers editing.">_IQ</author>
     <author contribution="Gameplay ideas.">Aceman1998</author>
 </authors>
-<!-- People that contributed in some way to the map. -->
 <contributors>
     <contributor contribution="Feedback.">salalu</contributor>
     <contributor contribution="Help Fixing the map.">nixter1029</contributor>
 </contributors>
 <teams>
-<team color="blue" max="60" max-overfill="75">Blue Team</team>
-<team color="dark red" max="60" max-overfill="75">Red Team</team>
+    <team color="blue" max="60" max-overfill="75">Blue Team</team>
+    <team color="dark red" max="60" max-overfill="75">Red Team</team>
 </teams>
 <kits>
     <kit name="heal">
@@ -58,7 +56,7 @@
     <item>diamond sword</item>
     <item>iron axe</item>
     <item>iron sword</item>
-    <item enchantment="DAMAGE ALL: 2">iron sword</item>
+    <item enchantment="damage all:2">iron sword</item>
     <item>bow</item>
     <item>diamond leggings</item>
     <item>bone</item>
@@ -79,23 +77,22 @@
     <blockdamage>on</blockdamage>
     <yield>0</yield>
 </tnt>
-<!--filters-->
 <filters>
-    <filter name="breakable-blocks" parents="deny-blocks">
-        <allow>
+    <filter name="breakable-blocks">
+        <any>
             <block>iron ore</block>
             <block>wood</block>
             <block>log</block>
             <block>stone</block>
             <block>cobblestone</block>
-            <block>wood_step</block>
-        </allow>
+            <block>wood step</block>
+        </any>
     </filter>
-    <filter name="only-red" parents="deny-blocks">
+    <filter name="only-red">
         <team>red</team>
     </filter>
     
-    <filter name="only-blue" parents="deny-blocks">
+    <filter name="only-blue">
         <team>blue</team>
     </filter>
 </filters>
