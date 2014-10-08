@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <map proto="1.3.5">
-<name>Winter is Coming</name> <!--might be changed-->
-<version>1.0.0</version>
+<name>Flowery Meadows</name>
+<version>1.1.0</version>
 <objective>Destroy the ennemy's monument and core.</objective>
 <authors>
     <author>Timothee38</author> 
 </authors>
 <contributors>
-    <contributor contribution="Feedback and probably XML Fixing.">_IQ</contributor>
+    <contributor contribution="Feedback, Map and XML Fixing.">_IQ</contributor>
 </contributors>
 
 <teams>
@@ -18,7 +18,7 @@
 <kits>
     <kit name="spawn">
         <item slot="0">stone sword</item>
-        <item slot="1" enchantment="arrow infinite: 1">bow</item>
+        <item slot="1" enchantment="arrow infinite:1">bow</item>
         <item slot="3">stone axe</item>
         <item slot="2">diamond pickaxe</item>
         <item slot="4" amount="32">golden carrot</item>
@@ -39,33 +39,43 @@
 
 <spawns>
     <spawn team="red" kit="red" yaw="-24">
-        <point>79,4,-516</point>
+        <point>79,4,-545</point>
     </spawn>
     <spawn team="blue" kit="blue" yaw="-158">
-        <point>79,4,-265</point>
+        <point>79,4,-236</point>
     </spawn>
     <default yaw="0">
         <cuboid min="54,90,-391" max="54,90,-390"/>
     </default>
 </spawns>
 
-<cores material="obsidian" leak="5">
+<cores material="obsidian" leak="1">
     <core team="blue">
-        <cuboid min="33,6,-266" max="28,17,-260"/>
+        <cuboid min="32,8,-236" max="28,16,-232"/>
     </core>
     <core team="red">
-        <cuboid min="33,6,-515" max="27,17,-521"/>
+        <cuboid min="28,8,-549" max="32,16,-545"/>
     </core>
 </cores>
 
 <destroyables name="Monument" materials="obsidian" completion="100%" mode-changes="true">
     <destroyable owner="blue">
-       <cuboid min="28,4,-301" max="24,9,-305"/>
+       <cuboid min="28,5,-276" max="24,10,-272"/>
     </destroyable>
     <destroyable owner="red">
-       <cuboid min="24,4,-476" max="28,9,-480"/>
+       <cuboid min="28,5,-509" max="24,10,-505"/>
     </destroyable>
 </destroyables>
+
+<renewables>
+    <renewable rate="2.5" grow="true" particles="true" sound="true" avoid-entities="true">
+        <region>
+            <cuboid name="iron1" min="93,0,-264" max="71,15,-288"/> 
+            <cuboid name="iron2" min="93,0,-517" max="71,15,-495"/>
+        </region>
+        <renew>iron block</renew>
+    </renewable>
+</renewables>
 
 <modes>
     <mode after="30m" material="beacon"/>
@@ -73,9 +83,9 @@
 </modes>
 
 <regions>
-    <rectangle name="redspawn" min="91,-528" max="71,-501"/>
-    <rectangle name="bluespawn" min="91,-253" max="72,-281"/>
-    <apply block="deny-all">
+    <rectangle name="redspawn" min="72,-531" max="90,-557"/>
+    <rectangle name="bluespawn" min="90,-225" max="72,-251"/>
+    <apply block="deny-all" message="You may not break blocks in spawn.">
         <region name="redspawn"/>
         <region name="bluespawn"/>
     </apply>
