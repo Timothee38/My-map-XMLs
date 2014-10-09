@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<map proto="1.3.5">
+<name>Harvest</name> 
+<version>1.0.0</version> 
+<objective>Leak both of the enemies cores to win.</objective>
+<authors>
+    <author>rockymine</author>
+    <author>Timothee38</author>
+</authors>
+<teams>
+   <team id="purple" color="purple" max="32" max-overfill="34">Purple Team</team>
+   <team id="cyan" color="cyan" max="32" max-overfill="34">Cyan Team</team>
+</teams>
+<kits>
+    <kit name="spawn">   
+        <item slot="0">stone sword</item>
+        <item slot="1" enchantment="arrow infinite:1">bow</item>
+        <item slot="28">arrow</item>
+        <item slot="2">diamond pickaxe</item>
+        <item slot="3">iron spade</item>
+        <item slot="4" amount="64" damage="2">wood</item>
+        <item slot="31" amount="64" damage="2">wood</item>
+        <item slot="7" amount="32">baked potato</item>
+        <item slot="8">bucket</item>
+        <leggings>chainmail leggings</leggings>
+        <potion duration="5" amplifier="25">heal</potion>
+        <potion duration="5" amplifier="25">damage resistance</potion>
+    </kit>
+    <kit name="purple" parents="spawn">
+        <helmet color="7F3FB2" damage="-3000">leather helmet</helmet>
+        <chestplate color="7F3FB2" damage="-3000">leather chestplate</chestplate>
+        <boots color="7F3FB2" damage="-3000">leather boots</boots>
+    </kit>
+    <kit name="cyan" parents="spawn">
+        <helmet color="4C7F99" damage="-3000">leather helmet</helmet>
+        <chestplate color="4C7F99" damage="-3000">leather chestplate</chestplate>
+        <boots color="4C7F99" damage="-3000">leather boots</boots>
+    </kit>
+</kits>
+<spawns>
+    <spawn team="purple" kit="purple" yaw="-179">
+        <cylinder base="370,18,-444" radius="1" height="0" />
+    </spawn>
+    <spawn team="cyan" kit="cyan" yaw="0">
+        <cylinder base="310,18,-194" radius="1" height="0" />
+    </spawn>
+    <default yaw="-179">
+        <point>340.5,50,-319.5</point>
+    </default>
+</spawns>
+<filters>
+    <filter name="only-purple">
+        <team>purple</team>
+    </filter>
+    <filter name="only-cyan">
+        <team>cyan</team>
+    </filter>
+    <filter name="only-iron" parents="deny-all">
+        <allow>
+            <block>iron block</block>
+        </allow>
+    </filter>
+</filters>
+<regions>
+    <union name="spawns">
+        <rectangle name="purple-spawn" min="364.5,-463.5" max="376.5,-443.5" />
+        <rectangle name="cyan-spawn" min="316.5,-177.5" max="304.5,-197.5" />
+    </union>
+    <apply enter="only-purple" message="You may not enter the enemies base!">
+        <region name="purple-spawn"/>
+    </apply>
+    <apply enter="only-cyan" message="You may not enter the enemies base!">
+        <region name="cyan-spawn"/>
+    </apply>
+        <apply block="deny-all" message="You may not build outside of the map">
+        <negative>
+                <cuboid name="playable" min="383,0,-172" max="297,45,-468"/>
+        </negative>
+    </apply>
+    <apply block-break="only-iron" block-place="deny-all" message="You may only break iron blocks in the base!">
+        <region name="spawns"/>
+    </apply>
+</regions>
+<renewables>
+    <renewable rate="5" grow="false" particles="true" sound="true" avoid-entities="true">
+        <region>
+            <cuboid name="playable" min="383,0,-172" max="297,45,-468"/>
+        </region>
+        <renew>iron block</renew>
+    </renewable>
+</renewables>
+
+<proximity-alarms>
+    <proximity-alarm message="Enemy detected at Purple's front core." flare-radius="3">
+        <region>
+            <cylinder base="350,0,-372" radius="5" height="38"/>
+        </region>
+        <detect>
+            <team>cyan</team>
+        </detect>
+    </proximity-alarm>
+    <proximity-alarm message="Enemy detected at Cyan's front core." flare-radius="3">
+        <region>
+            <cylinder base="330,0,-266" radius="5" height="38"/>
+        </region>
+        <detect>
+            <team>purple</team>
+        </detect>
+    </proximity-alarm>
+</proximity-alarms>
+
+<cores material="obsidian" leak="2">
+    <core name="Front Core" team="cyan">
+        <cuboid min="333,37,-269" max="327,30,-263"/>
+    </core>
+    <core name="Back Core" team="cyan">
+        <cuboid min="332,31,-206" max="338,24,-200"/>
+    </core>
+    <core name="Front Core" team="purple">
+        <cuboid min="347,37,-369" max="353,30,-375"/>
+    </core>
+    <core name="Back Core" team="purple">
+        <cuboid min="342,31,-432" max="348,24,-438"/>
+    </core>
+</cores>
+
+<itemremove>
+    <item>arrow</item>
+    <item>baked potato</item>
+    <item>leather helmet</item>
+    <item>leather chestplate</item>
+    <item>leather boots</item>
+    <item>chain leggings</item>
+    <item>bucket</item>
+    <item>iron spade</item>
+    <item>carpet</item>
+    <item>obsidian</item>
+    <item>apple</item>
+    <item>crops</item>
+    <item>sapling</item>
+    <item>grass</item>
+    <item>red rose</item>
+    <item>haybale</item>
+</itemremove>
+<toolrepair>
+    <tool>stone sword</tool>
+    <tool>bow</tool>
+    <item>diamond pickaxe</item>
+</toolrepair>
+
+<timelock>on</timelock>
+<maxbuildheight>33</maxbuildheight>
+</map>
