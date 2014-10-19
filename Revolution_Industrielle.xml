@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
-<map>
-<name>Révolution Industrielle</name>
-<version>1.0.0</version>
+<map proto="1.3.5">
+<name>Revolution Industrielle</name>
+<version>1.0.1</version>
 <objective>Leak the enemy team's core</objective>
 <authors>
     <author>Timothee38</author>
@@ -130,66 +130,6 @@
 </cores>
 <killreward>
     <item name="`6Golden Snack" amount="2">golden apple</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="2"/>
-    </filter>
-    <item amount="256">tnt</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="3"/>
-    </filter>
-    <item enchantment="efficiency:1;durability:3">diamond axe</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="4"/>
-    </filter>
-    <item amount="3">diamond block</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="5"/>
-    </filter>
-    <item damage="8193">potion</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="6"/>
-    </filter>
-    <item>enchantment table</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="7"/>
-    </filter>
-    <item enchantment="protection:1" damage="-3000">diamond chestplate</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="10"/>
-    </filter>
-    <item amount="128">tnt</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="12"/>
-    </filter>
-    <item amount="5">exp bottle</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="20"/>
-    </filter>
-    <item amount="128">tnt</item>
-</killreward>
-<killreward>
-    <filter>
-        <kill-streak count="40"/>
-    </filter>
-    <item amount="30">bookshelf</item>
 </killreward>
 
 <itemremove>
