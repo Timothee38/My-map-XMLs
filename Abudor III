@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<map proto="1.3.5">
+<name>GS: Abudor 3</name>
+<version>1.0.0</version>
+<objective>Kill the ennemy squadron or capture the center point!</objective>
+<authors>
+    <author>Timothee38</author>
+    <author>Dracoheart2</author>
+</authors>
+<ghostsquadron/>
+<include src="gs-classes.xml"/>
+<blitz>
+    <time>6m</time>
+    <broadcastLives>false</broadcastLives>
+    <title>Ghost Squadron / CP</title>
+    <lives>2</lives>
+</blitz>
+<control-points capture-players="lead" incremental="true" show-progress="true">
+    <control-point name="Omega Center CP" capture-time="10s">
+        <capture><cuboid min="-53,0,-9" max="-45,5,-17"/></capture>
+        <progress><cuboid min="-53,0,-9" max="-45,5,-17"/></progress>
+        <captured><cuboid min="-53,0,-9" max="-45,29,-17"/></captured>
+    </control-point>
+</control-points>
+
+<teams>
+   <team id="red" color="dark red" max="8" max-overfill="10">Red Team</team>
+   <team id="blue" color="blue" max="8" max-overfill="10">Blue Team</team>
+</teams>
+
+<killreward>
+    <item name="`4Landmine `6| `bFuse: 1s `6| `bPower: 2" lore="`9Use this strategically! It could be helpful...">tnt</item>
+</killreward>
+
+<tnt>
+    <instantignite>on</instantignite>
+    <fuse>1s</fuse>
+    <power>2</power>
+    <blockdamage>false</blockdamage>
+</tnt>
+
+<filters>
+    <filter name="only-tnt">
+        <block>tnt</block>
+    </filter>
+</filters>
+
+<regions>
+    <rectangle name="main" min="-oo,-oo" max="oo,oo"/>
+    <apply block="only-tnt">
+        <region name="main"/>
+    </apply>
+</regions>
+
+<proximity-alarms>
+    <proximity-alarm message="Enemy detected at Capture Point!" flare-radius="3">
+        <region>
+            <cylinder base="-49,2,-13" radius="4" height="20"/>
+        </region>
+        <detect>
+            <team>red</team>
+            <team>blue</team>
+        </detect>
+    </proximity-alarm>
+</proximity-alarms>
+
+<spawns>
+    <spawn team="red" yaw="-90">
+        <point>-74,6,-12</point>
+    </spawn>
+    <spawn team="blue" yaw="90">
+        <point>-24,6,-12</point>
+    </spawn>
+    <default yaw="0">
+        <point>-49,19,-41</point>
+    </default>
+</spawns>
+
+<timelock>on</timelock>
+
+</map>
