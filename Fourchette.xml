@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<map proto="1.3.6">
+<name>Fourchette</name>
+<version>1.0.0</version>
+<objective>Cap all three wools to win.</objective>
+<authors>
+    <author>Timothee38</author>
+</authors>
+<contributors>
+    <contributor contribution="Feedback">Captain_Elliott</contributor>
+    <contributor contribution="Feedback">Tywnis</contributor>
+</contributors>
+<teams>
+    <team id="red" color="dark red" max="32" max-overfill="36">Red Team</team>
+    <team id="blue" color="blue" max="32" max-overfill="36">Blue Team</team>
+</teams>
+<kits>
+    <kit name="spawn">
+        <item slot="0">iron sword</item>
+        <item slot="1" enchantment="arrow infinite:1">bow</item>
+        <item slot="28">arrow</item>
+        <item slot="2" enchantment="durability:3;dig speed:1">iron pickaxe</item>
+        <item slot="3">iron axe</item>
+        <item slot="4" amount="64" damage="1">log</item>
+        <item slot="5" amount="64">glass</item>
+        <item slot="6">bucket</item>
+        <item slot="7">golden apple</item>
+        <item slot="8" amount="64">cooked fish</item>
+    </kit>
+</kits>
+
+<spawns>
+    <spawn team="red" kit="spawn" yaw="-90">
+        <cuboid min="145,6,183" max="147,6,185"/>
+    </spawn>
+    <spawn team="blue" kit="spawn" yaw="90">
+        <cuboid min="-25,6,185" max="-27,6,183"/>
+    </spawn>
+    <default yaw="180">
+        <cuboid min="60,48,183" max="58,48,185"/>
+    </default>
+</spawns>
+
+<wools team="blue">
+    <wool color="orange">
+        <monument><block>-32,7,188</block></monument>
+    </wool>
+    <wool color="lime">
+        <monument><block>-32,7,184</block></monument>
+    </wool>
+    <wool color="magenta">
+        <monument><block>-32,7,180</block></monument>
+    </wool>
+</wools>
+
+<wools team="red">
+    <wool color="green">
+        <monument><block>152,7,180</block></monument>
+    </wool>
+    <wool color="light blue">
+        <monument><block>152,7,184</block></monument>
+    </wool>
+    <wool color="yellow">
+        <monument><block>152,7,188</block></monument>
+    </wool>
+</wools>
+
+<portals>
+    <portal filter="only-red" x="@119" y="@6" z="@184" yaw="@90">
+        <region><cuboid min="157,4,187" max="159,9,181"/></region>
+    </portal>
+    <portal filter="only-red" x="@145" y="@6" z="@184">
+        <region><cuboid min="123,4,187" max="125,9,181"/></region>
+    </portal>
+    
+    <portal filter="only-blue" x="@0" y="@6" z="@184" yaw="@-90">
+        <region><cuboid min="-37,4,187" max="-39"/></region>
+    </portal>
+    <portal filter="only-blue" x="@-26,6,184" y="@" z="@">
+        <region><cuboid min="-3,4,181" max="-5,9,187"/></region>
+    </portal>
+</portals>
+
+<timelock>on</timelock>
+
+<filters>
+    <filter name="no-void">
+        <not>
+            <void/>
+        </not>
+    </filter>
+    <filter name="only-red">
+        <team>red</team>
+    </filter>
+    <filter name="only-blue">
+        <team>blue</team>
+    </filter>
+    <filter name="only-iron">
+        <block>iron block</block>
+    </filter>
+</filters>
+
+<regions>
+    <union name="spawns">
+        <rectangle name="red-spawn" min="130,168" max="168,199"/>
+        <rectangle name="blue-spawn" min="-10,198" max="-46,167"/>
+    </union>
+    <union name="red-side-woolrooms">
+        <rectangle name="1r" min="168,107" max="202,75"/>
+        <rectangle name="2r" min="220,167" max="253,202"/>
+        <rectangle name="3r" min="199,261" max="165,289"/>
+    </union>
+    <union name="blue-side-woolrooms">
+        <rectangle name="1b" min="-48,261" max="-82,288"/>
+        <rectangle name="2b" min="-99,201 " max="-127,164"/>
+        <rectangle name="3b" min="-78,107" max="-43,75"/>
+    </union>
+    <union name="portals">
+        <rectangle min="127,179" max="123,188"/>
+        <rectangle min="" max=""/>
+    </union>
+    <apply block="deny-all" message="You may not destroy the portals">
+        <region name="portals"/>
+    </apply>
+    <apply enter="only-red">
+        <region name="blue-side-woolrooms"/>
+    </apply>
+    <apply enter="only-blue">
+        <region name="red-side-woolrooms"/>
+    </apply>
+    <apply block="only-iron">
+        <region name="spawns"/>
+    </apply>
+    <apply block="no-void" message="You may not modify the void area!">
+        <rectangle min="-oo,-oo" max="oo,oo"/>
+    </apply>
+</regions>
+
+<itemremove>
+    <item>log</item>
+    <item>wood</item>
+    <item>bucket</item>
+    <item>cooked fish</item>
+    <item>golden apple</item>
+    <item>glass</item>
+    <item>string</item>
+    <item>redstone block</item>
+    <item>redstone lamp</item>
+    <item>diode</item>
+    <item>stained clay</item>
+    <item>quartz block</item>
+    <item>apple</item>
+    <item>sapling</item>
+    <item>soulsand</item>
+    <item>mushroom</item>
+</itemremove>
+<toolrepair>
+    <tool>iron sword</tool>
+    <tool>iron pickaxe</tool>
+    <tool>iron axe</tool>
+    <tool>bow</tool>
+    <tool>arrow</tool>
+</toolrepair>
+<maxbuildheight>30</maxbuildheight>
+</map>
