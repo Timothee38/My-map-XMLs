@@ -74,7 +74,7 @@
     </portal>
     
     <portal filter="only-blue" x="@0" y="@6" z="@184" yaw="@-90">
-        <region><cuboid min="-37,4,187" max="-39"/></region>
+        <region><cuboid min="-37,4,187" max="-39,9,181"/></region>
     </portal>
     <portal filter="only-blue" x="@-26,6,184" y="@" z="@">
         <region><cuboid min="-3,4,181" max="-5,9,187"/></region>
@@ -117,7 +117,7 @@
     </union>
     <union name="portals">
         <rectangle min="127,179" max="123,188"/>
-        <rectangle min="" max=""/>
+        <rectangle min="-3,189" max="-9,177"/>
     </union>
     <apply block="deny-all" message="You may not destroy the portals">
         <region name="portals"/>
