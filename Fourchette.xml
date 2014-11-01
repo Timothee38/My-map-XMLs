@@ -31,13 +31,13 @@
 
 <spawns>
     <spawn team="red" kit="spawn" yaw="-90">
-        <cuboid min="145,6,183" max="147,6,185"/>
+        <region><cuboid min="145,6,183" max="147,6,185"/></region>
     </spawn>
     <spawn team="blue" kit="spawn" yaw="90">
-        <cuboid min="-25,6,185" max="-27,6,183"/>
+        <region><cuboid min="-25,6,185" max="-27,6,183"/></region>
     </spawn>
     <default yaw="180">
-        <cuboid min="60,48,183" max="58,48,185"/>
+        <region><cuboid min="60,48,183" max="58,48,185"/></region>
     </default>
 </spawns>
 
