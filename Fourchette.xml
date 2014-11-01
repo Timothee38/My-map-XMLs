@@ -42,25 +42,25 @@
 </spawns>
 
 <wools team="blue">
-    <wool color="orange">
+    <wool color="orange" location="183,8,275">
         <monument><block>-32,7,188</block></monument>
     </wool>
-    <wool color="lime">
+    <wool color="lime" location="183,8,93">
         <monument><block>-32,7,184</block></monument>
     </wool>
-    <wool color="magenta">
+    <wool color="magenta" location="234,8,184">
         <monument><block>-32,7,180</block></monument>
     </wool>
 </wools>
 
 <wools team="red">
-    <wool color="green">
+    <wool color="green" location="-63,8,275">
         <monument><block>152,7,180</block></monument>
     </wool>
-    <wool color="light blue">
+    <wool color="light blue" location="-113,8,184">
         <monument><block>152,7,184</block></monument>
     </wool>
-    <wool color="yellow">
+    <wool color="yellow" location="-63,8,93">
         <monument><block>152,7,188</block></monument>
     </wool>
 </wools>
