@@ -24,6 +24,7 @@
     <kit name="swatter">
         <item slot="0" lore="`aFly Swatter!">iron sword</item>
         <item slot="1" damage="-3000" enchantment="arrow damage:10" lore="`aFly Zapper!">bow</item>
+        <item slot="28" amount="2">arrow</item>
         <potion duration="oo" amplifier="25" ambient="true">heal</potion>
 		<potion duration="oo" amplifier="25" ambient="true">damage resistance</potion>
 		<double-jump/>
