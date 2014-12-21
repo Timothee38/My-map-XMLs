@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<map proto="1.3.6">
+<name>Fly Swat</name>
+<version>1.0.0</version>
+<objective>Swat these annoying flies!</objective>
+
+<authors>
+    <author>Timothee38</author>
+    <author>DoomRobotBoy</author>
+</authors>
+
+<contributors>
+    <contributor contribution="Feedback and XML ideas.">ElectroidFilms</contributor>
+</contributors>
+
+<teams>
+   <team id="swatter" color="dark red" max="1" max-overfill="2">The Swatter</team>
+   <team id="flies" color="blue" max="35" max-overfill="40">The Flies</team>
+</teams>
+
+
+<!--Magic kits-->
+<kits>
+    <kit name="swatter">
+        <item slot="0" lore="`aFly Swatter!">iron sword</item>
+        <item slot="1" damage="-3000" enchantment="arrow damage:10" lore="`aFly Zapper!">bow</item>
+        <potion duration="oo" amplifier="25" ambient="true">heal</potion>
+		<potion duration="oo" amplifier="25" ambient="true">damage resistance</potion>
+		<double-jump/>
+    </kit>
+    <kit name="flies">
+    	<potion duration="oo" amplifier="-3" ambient="true">health boost</potion>
+    	<fly flying="true"/>
+    </kit>
+</kits>
+
+<mob-disguises>
+    <disguise type="bat">
+        <filter>
+            <team>flies</team>
+        </filter>
+    </disguise>
+</mob-disguises>
+
+
+<spawns>
+	<spawn team="flies" safe="true">
+		<region><cuboid name="flies-spawn" min="150,7,-38" max="160,12,-13"/></region>
+   	</spawn>
+   	<spawn team="swatter" yaw="24">
+   		<region><cuboid name="swatter-spawn" min="158,2,-31" max="159,2,-32"/></region>
+   	</spawn>
+   	<default yaw="145">
+   		<region>
+   			<cuboid name="default-spawn" min="158,8,-21" max="159,8,-20"/>
+   		</region>
+   	</default>
+</spawns>
+
+<regions>
+	<apply enter="deny-all" message="You may not fly too high!">
+		<cuboid name="upper-region" min="-oo ,18,-oo" max="oo,oo,oo"/>
+	</apply>
+	<apply block="deny-all">
+		<rectangle name="main" min="-oo,-oo" max="oo,oo"/>
+	</apply>
+</regions>
+
+<blitz>
+    <time>5m</time>
+    <lives>1</lives>
+    <broadcastLives>false</broadcastLives>
+    <title>Fly Swat</title>
+</blitz>
+
+<mobs>
+    <filter>
+        <spawn>spawner</spawn>
+    </filter>
+</mobs>
+
+<killreward>
+	<item>arrow</item>
+</killreward>
+<disabledamage>
+	<damage>fall</damage>
+</disabledamage>
+
+<timelock>on</timelock>
+
+<itemremove>
+	<item>iron sword</item>
+	<item>bow</item>
+</itemremove>
+
+<include src="blitz-global.xml"/>
+
+</map>
