@@ -1,0 +1,149 @@
+<?xml version="1.0"?>
+<map proto="1.3.6">
+<name>Bomberman</name>
+<version>1.0.0</version>
+<objective>Blow up your ennemies.</objective>
+
+<authors>
+    <author>Timothee38</author>
+    <author contribution="Main game idea, inspired Timothee in making this map.">Kitatist</author>
+</authors>
+
+<blitz>
+    <time>10m</time>
+    <lives>1</lives>
+    <broadcastLives>false</broadcastLives>
+    <title>Bomberman</title>
+</blitz>
+
+<teams>
+   <team id="red" color="dark red" max="1" max-overfill="1">Red Player</team>
+   <team id="blue" color="blue" max="1" max-overfill="1">Blue Player</team>
+   <team id="orange" color="orange" max="1" max-overfill="1">Orange Player</team>
+   <team id="green" color="green" max="1" max-overfill="1">Green Player</team>
+   <team id="lime" color="lime" max="1" max-overfill="1">Lime Player</team>
+   <team id="brown" color="brown" max="1" max-overfill="1">Brown Player</team>
+   <team id="black" color="black" max="1" max-overfill="1">Black Player</team>
+   <team id="purple" color="purple" max="1" max-overfill="1">Purple Player</team>
+</teams>
+
+<spawns>
+    <spawn team="red" kit="player">
+        <regions yaw="-45">
+            <cuboid min="-52,1,97" max="-53,1,98"/>
+        </regions>
+    </spawn>
+    <spawn team="blue" kit="player">
+        <regions yaw="0">
+            <cuboid min="-41,1,97" max="-40,1,98"/>
+        </regions>
+    </spawn>
+    <spawn team="orange" kit="player">
+        <regions yaw="130">
+            <cuboid min="-7,1,131" max="-8,1,130"/>
+        </regions>
+    </spawn>
+    <spawn team="green" kit="player">
+        <regions yaw="0">
+            <cuboid min="-20,1,98" max="-19,1,97"/>
+        </regions>
+    </spawn>
+    <spawn team="lime" kit="player">
+        <regions yaw="45">
+            <cuboid min="-7,1,97" max="-8,1,98"/>
+        </regions>
+    </spawn>
+    <spawn team="brown" kit="player">
+        <regions yaw="-130">
+            <cuboid min="-53,1,131" max="-52,1,130"/>
+        </regions>
+    </spawn>
+    <spawn team="black" kit="player">
+        <regions yaw="90">
+            <cuboid min="-19,1,131" max="-20,1,130"/>
+        </regions>
+    </spawn>
+    <spawn team="purple" kit="player">
+        <regions yaw="-90">
+            <cuboid min="-41,1,130" max="-40,1,131"/>
+        </regions>
+    </spawn>
+    <default kit="obs">
+        <regions yaw="0">
+            <cuboid min="-31,7,113" max="-29,7,115"/>
+        </regions>
+    </default>
+</spawns>
+
+<kits>
+	<kit name="obs">
+		<potion duration="oo">night vision</potion>
+	</kit>
+	<kit name="teams" potion-particles="false">
+		<potion duration="oo"></potion>
+		<item amount="1" lore="`6Bomb">TNT</item>
+		<chestplate damage="-3000" attributes="generic.maxHealth:add:-14" locked="true">iron chestplate</chestplate>
+	</kit>
+</kits>
+
+<disabledamage>
+    <damage self="true" enemy="false">block explosion</damage>
+</disabledamage>
+
+<filters>
+	<filter name="only-some">
+		<any>
+			<block>brick</block>
+			<block>tnt</block>
+		</any>
+	</filter>
+</filters>
+
+<regions>
+	<rectangle name="whole" min="-oo,-oo" max="oo,oo"/>
+	<cuboid name="bricks" min="-54,1,132" max="-6,6,96"/>
+	<apply block="only-some">
+		<region name="whole"/>
+	</apply>
+</regions>
+
+<blockdrops>
+	<!--Very Powerfull grenades fall-->
+	<rule>
+        <region><region name="bricks"/></region>
+        <fall-chance>0.05</fall-chance>
+        <drops>
+        	<item name="`a`lNuke" enchantment="thorns" grenade="true" grenade-power="5" grenade-fire="true">snow ball</item>
+        </drops>
+    </rule>
+
+	<!--Powerfull grenades fall-->
+    <rule>
+        <region><region name="bricks"/></region>
+        <fall-chance>0.5</fall-chance>
+        <drops>
+        	<item name="`6`lGrenade" grenade="true" grenade-power="1.25">snow ball</item>
+        </drops>
+    </rule>
+
+    <!--TNT Bricks Drop-->
+    <rule>
+   		<region><region name="bricks"/></region>
+   		<fall-chance>1</fall-chance>
+   		<drops>
+   			<item lore="`6Bomb">TNT</item>
+   		</drops>			
+    </rule>
+</blockdrops>
+
+<tnt>
+    <instantignite>on</instantignite>
+    <power>2</power>
+    <blockdamage>on</blockdamage>
+</tnt>
+
+<timelock>on</timelock>
+
+<include src="blitz-global.xml"/>
+
+</map>
