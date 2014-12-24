@@ -80,7 +80,6 @@
 	<potion duration="oo">night vision</potion>
     </kit>
     <kit name="teams" potion-particles="false">
-	<potion duration="oo"></potion>
 	<item amount="1" lore="`6Bomb">TNT</item>
 	<chestplate damage="-3000" attributes="generic.maxHealth:add:-14" locked="true">iron chestplate</chestplate>
     </kit>
