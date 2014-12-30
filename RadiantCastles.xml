@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<map proto="1.3.6">
+<name>Radiant Castles</name>
+<version>1.0.0</version>
+<objective>Get the most kills in 10 minutes!</objective>
+
+<authors>
+	<author>MySquishyTurtle</author>
+	<author>Timothee38</author>
+</authors>
+
+<broadcasts>
+    <tip after="1s">You can enter the scorebox only every 3 kills</tip>
+    <tip after="1m" every="2m">You can enter the scorebox only every 3 kills</tip>
+</broadcasts>
+
+<teams>
+   <team id="red" color="dark red" max="16" max-overfill="20">Red Team</team>
+   <team id="blue" color="blue" max="16" max-overfill="20">Blue Team</team>
+</teams>
+
+<spawns>
+    <spawn team="red" kit="red">
+        <regions yaw="0">
+            <cuboid min="255,16,-201" max="257,16,-199"/>
+        </regions>
+    </spawn>
+    <spawn team="blue" kit="blue">
+        <regions yaw="180">
+            <cuboid min="143,16,-201" max="141,16,-199"/>
+        </regions>
+    </spawn>
+    <default>
+        <regions yaw="0">
+            <cuboid min="200,45,-199" max="198,45,-201"/>
+        </regions>
+    </default>
+</spawns>
+
+<kits>
+	<kit name="spawn">
+		<item slot="0" damage="-3000">stone sword</item>
+		<item slot="1" damage="-3000" enchantment="arrow infinite:1">bow</item>
+		<item slot="28" amount="1">arrow</item>
+		<item slot="2" amount="32">golden carrot</item>
+		<item slot="3">golden apple</item>
+		<!--  Potion of instant health II  -->
+		<potion duration="2" amplifier="1">heal</potion>
+		<potion duration="5">damage resistance</potion>
+		<chestplate damage="-3000">gold chestplate</chestplate>
+	</kit>
+	<kit name="red" parents="spawn">
+		<helmet color="993333" damage="-3000">leather helmet</helmet>
+		<leggings color="993333" damage="-3000">leather leggings</leggings>
+		<boots color="993333" damage="-3000">leather boots</boots>
+	</kit>
+	<kit name="blue" parents="spawn">
+		<helmet color="334CB2" damage="-3000">leather helmet</helmet>
+		<leggings color="334CB2" damage="-3000">leather leggings</leggings>
+		<boots color="334CB2" damage="-3000">leather boots</boots>
+	</kit>
+</kits>
+<killreward>
+	<item>golden apple</item>
+	<filter>
+        <kill-streak count="3" repeat="true"/>
+    </filter>
+    <item>clock</item>
+</killreward>
+
+<score>
+	<time>15m</time>
+	<box value="10" filter="only-blue" cooldown="5">
+		<region name="blue-score-zone"/>
+	</box>
+	<box value="10" filter="only-red" cooldown="5">
+		<region name="red-score-zone"/>
+	</box>
+</score>
+
+<filters>
+    <filter name="key">
+        <carrying><item >clock</item></carrying>
+    </filter>
+    <filter name="only-red">
+		<team>red</team>
+	</filter>
+	<filter name="only-blue">
+		<team>blue</team>
+	</filter>
+</filters>
+
+<regions>
+	<cuboid name="red-score-zone" min="245,0,-196" max="250,11,-204"/>
+	<cuboid name="blue-score-zone" min="153,0,-204" max="148,11,-196"/> 
+	<apply block="deny-all">
+		<rectangle min="-oo,-oo" max="oo,oo"/>
+	</apply>
+	<apply enter="key">
+		<region name="blue-score-zone"/>
+		<region name="red-score-zone"/>
+	</apply>
+</regions>
+
+<portals>
+<!--  portals from score zones to bases  -->
+	<portal x="@256" y="@16" z="@-200"  yaw="@0" filter="only-red">
+		<region name="blue-score-zone"/>
+	</portal>
+	<portal x="@142" y="@16" z="@-200" yaw="@180" filter="only-blue">
+		<region name="red-score-zone"/>
+	</portal>
+</portals>
+
+<toolrepair>
+	<tool>bow</tool>
+	<tool>stone sword</tool>
+</toolrepair>
+<itemremove>
+	<item>arrow</item>
+	<item>leather helmet</item>
+	<item>gold chestplate</item>
+	<item>leather leggings</item>
+	<item>leather boots</item>
+	<item>golden apple</item>
+	<item>golden carrot</item>
+</itemremove>
+
+</map>
