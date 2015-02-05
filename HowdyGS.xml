@@ -1,0 +1,24 @@
+<map proto="1.3.0">
+<name>Howdy</name>
+<version>1.0.0</version>
+<objective>Kill the enemy's squadron!</objective>
+<include src="gs.xml"/>
+<authors>
+    <author>Timothee38</author>
+</authors>
+<teams>
+    <team color="blue" max="8">Blue</team>
+    <team color="dark red" max="8">Red</team>
+</teams>
+<spawns>
+    <spawn team="blue" yaw="90">
+        <cuboid min="52,3,-42" max="54,3,-44"/>
+    </spawn>
+    <spawn team="red" yaw="-90">
+        <cuboid min="-13,3,-42" max="-15,3,-45"/>
+    </spawn>
+    <default yaw="0">
+        <cuboid min="19,30,-45" max="19,30,-42"/>
+    </default>
+</spawns>
+</map>
